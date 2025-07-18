@@ -22,6 +22,7 @@ body {
   max-height: 100%;
   position: relative;
   color: black;
+  cursor: pointer;
 }
 
 #boy {
@@ -30,4 +31,20 @@ body {
   width: 100%;
   object-fit: contain;
   position: absolute;
+}
+
+.boy_blink{
+  visibility: visible;
+}
+
+.boy_cross{
+  visibility: hidden;
+}
+
+#boy_box:hover .boy_blink {
+  visibility: hidden;
+}
+
+#boy_box:hover .boy_cross {
+  visibility: visible;
 }
