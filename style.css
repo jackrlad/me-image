@@ -1,9 +1,23 @@
+@font-face {
+  font-family: "Raster Forge";
+  src: url(fonts/raster-forge-font/RasterForgeRegular-JpBgm.ttf) format("truetype");
+}
+
 body {
-  background-color: black;
+  background-color: #670000;
+  transition: background-color 3s ease-in-out;
   color: #ffffff;
-  font-family: "8bitOperatorPlus-Bold", monospace;
+  font-family: "Raster Forge", monospace;
   padding: 0;
   margin: 0;
+}
+
+#black_body {
+  background-color: black; 
+}
+
+.fade-to-black {
+  background-color: black;
 }
 
 #centre {  
@@ -22,7 +36,6 @@ body {
   max-height: 100%;
   position: relative;
   color: black;
-  cursor: pointer;
 }
 
 #boy {
@@ -31,6 +44,15 @@ body {
   width: 100%;
   object-fit: contain;
   position: absolute;
+}
+
+#grave {
+  image-rendering: pixelated;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  position: absolute;
+  transition: opacity 3s ease-in-out;
 }
 
 .boy_blink{
@@ -47,4 +69,26 @@ body {
 
 #boy_box:hover .boy_cross {
   visibility: visible;
+}
+
+.text_container {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    min-height: 60px;
+    opacity: 0.05;
+    transition: opacity 0.5s ease;
+    color: white;
+}
+
+.fade_out {
+    opacity: 0;
+}
+
+.fade_in {
+    opacity: 0.05;
+}
+
+.fade_in_full {
+    opacity: 1;
 }
