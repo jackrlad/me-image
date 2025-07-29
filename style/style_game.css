@@ -1,0 +1,460 @@
+@font-face {
+  font-family: "Raster Forge";
+  src: url(../fonts/raster-forge-font/RasterForgeRegular-JpBgm.ttf) format("truetype");
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: "Raster Forge", monospace;
+}
+
+#centre {  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(7, 80px);
+  grid-template-rows: repeat(7, 80px);
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  image-rendering: pixelated;
+}
+.container > img {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: block;
+}
+
+#overlay-text-box {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0); /* Semi-transparent black */
+  color: white;
+  padding: 10px;
+  text-align: left;
+  font-size: 26px;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+#player {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  z-index: 10;
+  image-rendering: pixelated;
+  pointer-events: none; /* optional: prevents interfering with tile clicks */
+}
+
+.hidden {
+  opacity: 0;
+}
+
+
+
+
+.grass {
+  content: url( "../sprites/tileFloor.gif");
+}
+.bricks {
+  content: url( "../sprites/tileWall.png");
+}
+.tree {
+  content: url( "../sprites/tree.png");
+}
+.flower {
+  content: url( "../sprites/flower.png");
+}
+.table_left {
+  content: url( "../sprites/table_left.png");
+}
+.table_middle {
+  content: url( "../sprites/table_middle.png");
+}
+.table_right {
+  content: url( "../sprites/table_right.png");
+}
+.fire {
+  content: url( "../sprites/fire.gif");
+}
+
+
+
+
+
+.house_0 {
+  content: url( "../sprites/house/house_0.png");
+}
+.house_1 {
+  content: url( "../sprites/house/house_1.png");
+}
+.house_2 {
+  content: url( "../sprites/house/house_2.png");
+}
+.house_3 {
+  content: url( "../sprites/house/house_3.png");
+}
+.house_4 {
+  content: url( "../sprites/house/house_4.png");
+}
+.house_5 {
+  content: url( "../sprites/house/house_5.png");
+}
+.house_6 {
+  content: url( "../sprites/house/house_6.png");
+}
+.house_7 {
+  content: url( "../sprites/house/house_7.png");
+}
+.house_8 {
+  content: url( "../sprites/house/house_8.png");
+}
+.house_9 {
+  content: url( "../sprites/house/house_9.png");
+}
+.house_10 {
+  content: url( "../sprites/house/house_10.png");
+}
+.house_11 {
+  content: url( "../sprites/house/house_11.png");
+}
+.house_12 {
+  content: url( "../sprites/house/house_12.png");
+}
+.house_13 {
+  content: url( "../sprites/house/house_13.png");
+}
+.house_14 {
+  content: url( "../sprites/house/house_14.png");
+}
+.house_15 {
+  content: url( "../sprites/house/house_15.png");
+}
+.house_16 {
+  content: url( "../sprites/house/house_16.png");
+}
+.house_17 {
+  content: url( "../sprites/house/house_17.png");
+}
+
+
+
+
+
+.ground_floor_0 {
+  content: url( "../sprites/ground_floor/ground_floor_0.png");
+}
+.ground_floor_1 {
+  content: url( "../sprites/ground_floor/ground_floor_1.png");
+}
+.ground_floor_2 {
+  content: url( "../sprites/ground_floor/ground_floor_2.png");
+}
+.ground_floor_3 {
+  content: url( "../sprites/ground_floor/ground_floor_3.png");
+}
+.ground_floor_4 {
+  content: url( "../sprites/ground_floor/ground_floor_4.png");
+}
+.ground_floor_5 {
+  content: url( "../sprites/ground_floor/ground_floor_5.png");
+}
+.ground_floor_6 {
+  content: url( "../sprites/ground_floor/ground_floor_6.png");
+}
+.ground_floor_7 {
+  content: url( "../sprites/ground_floor/ground_floor_7.png");
+}
+.ground_floor_8 {
+  content: url( "../sprites/ground_floor/ground_floor_8.png");
+}
+.ground_floor_9 {
+  content: url( "../sprites/ground_floor/ground_floor_9.png");
+}
+.ground_floor_10 {
+  content: url( "../sprites/ground_floor/ground_floor_10.png");
+}
+.ground_floor_11 {
+  content: url( "../sprites/ground_floor/ground_floor_11.png");
+}
+.ground_floor_12 {
+  content: url( "../sprites/ground_floor/ground_floor_12.png");
+}
+.ground_floor_13 {
+  content: url( "../sprites/ground_floor/ground_floor_13.png");
+}
+.ground_floor_14 {
+  content: url( "../sprites/ground_floor/ground_floor_14.png");
+}
+.ground_floor_15 {
+  content: url( "../sprites/ground_floor/ground_floor_15.png");
+}
+.ground_floor_16 {
+  content: url( "../sprites/ground_floor/ground_floor_16.png");
+}
+.ground_floor_17 {
+  content: url( "../sprites/ground_floor/ground_floor_17.png");
+}
+.ground_floor_18 {
+  content: url( "../sprites/ground_floor/ground_floor_18.png");
+}
+.ground_floor_19 {
+  content: url( "../sprites/ground_floor/ground_floor_19.png");
+}
+.ground_floor_20 {
+  content: url( "../sprites/ground_floor/ground_floor_20.png");
+}
+.ground_floor_21 {
+  content: url( "../sprites/ground_floor/ground_floor_21.png");
+}
+.ground_floor_22 {
+  content: url( "../sprites/ground_floor/ground_floor_22.png");
+}
+.ground_floor_23 {
+  content: url( "../sprites/ground_floor/ground_floor_23.png");
+}
+.ground_floor_24 {
+  content: url( "../sprites/ground_floor/ground_floor_24.png");
+}
+.ground_floor_25 {
+  content: url( "../sprites/ground_floor/ground_floor_25.png");
+}
+.ground_floor_26 {
+  content: url( "../sprites/ground_floor/ground_floor_26.png");
+}
+.ground_floor_27 {
+  content: url( "../sprites/ground_floor/ground_floor_27.png");
+}
+.ground_floor_28 {
+  content: url( "../sprites/ground_floor/ground_floor_28.png");
+}
+.ground_floor_29 {
+  content: url( "../sprites/ground_floor/ground_floor_29.png");
+}
+.ground_floor_30 {
+  content: url( "../sprites/ground_floor/ground_floor_30.png");
+}
+.ground_floor_31 {
+  content: url( "../sprites/ground_floor/ground_floor_31.png");
+}
+.ground_floor_32 {
+  content: url( "../sprites/ground_floor/ground_floor_32.png");
+}
+.ground_floor_33 {
+  content: url( "../sprites/ground_floor/ground_floor_33.png");
+}
+.ground_floor_34 {
+  content: url( "../sprites/ground_floor/ground_floor_34.png");
+}
+.ground_floor_35 {
+  content: url( "../sprites/ground_floor/ground_floor_35.png");
+}
+.ground_floor_36 {
+  content: url( "../sprites/ground_floor/ground_floor_36.png");
+}
+.ground_floor_37 {
+  content: url( "../sprites/ground_floor/ground_floor_37.png");
+}
+.ground_floor_38 {
+  content: url( "../sprites/ground_floor/ground_floor_38.png");
+}
+.ground_floor_39 {
+  content: url( "../sprites/ground_floor/ground_floor_39.png");
+}
+.ground_floor_40 {
+  content: url( "../sprites/ground_floor/ground_floor_40.png");
+}
+.ground_floor_41 {
+  content: url( "../sprites/ground_floor/ground_floor_41.png");
+}
+.ground_floor_42 {
+  content: url( "../sprites/ground_floor/ground_floor_42.png");
+}
+.ground_floor_43 {
+  content: url( "../sprites/ground_floor/ground_floor_43.png");
+}
+.ground_floor_44 {
+  content: url( "../sprites/ground_floor/ground_floor_44.png");
+}
+.ground_floor_45 {
+  content: url( "../sprites/ground_floor/ground_floor_45.png");
+}
+.ground_floor_46 {
+  content: url( "../sprites/ground_floor/ground_floor_46.png");
+}
+.ground_floor_47 {
+  content: url( "../sprites/ground_floor/ground_floor_47.png");
+}
+.ground_floor_48 {
+  content: url( "../sprites/ground_floor/ground_floor_48.png");
+}
+.ground_floor_49 {
+  content: url( "../sprites/ground_floor/ground_floor_49.png");
+}
+
+
+
+
+
+.first_floor_0 {
+  content: url( "../sprites/first_floor/first_floor_0.png");
+}
+.first_floor_1 {
+  content: url( "../sprites/first_floor/first_floor_1.png");
+}
+.first_floor_2 {
+  content: url( "../sprites/first_floor/first_floor_2.png");
+}
+.first_floor_3 {
+  content: url( "../sprites/first_floor/first_floor_3.png");
+}
+.first_floor_4 {
+  content: url( "../sprites/first_floor/first_floor_4.png");
+}
+.first_floor_5 {
+  content: url( "../sprites/first_floor/first_floor_5.png");
+}
+.first_floor_6 {
+  content: url( "../sprites/first_floor/first_floor_6.png");
+}
+.first_floor_7 {
+  content: url( "../sprites/first_floor/first_floor_7.png");
+}
+.first_floor_8 {
+  content: url( "../sprites/first_floor/first_floor_8.png");
+}
+.first_floor_9 {
+  content: url( "../sprites/first_floor/first_floor_9.png");
+}
+.first_floor_10 {
+  content: url( "../sprites/first_floor/first_floor_10.png");
+}
+.first_floor_11 {
+  content: url( "../sprites/first_floor/first_floor_11.png");
+}
+.first_floor_12 {
+  content: url( "../sprites/first_floor/first_floor_12.png");
+}
+.first_floor_13 {
+  content: url( "../sprites/first_floor/first_floor_13.png");
+}
+.first_floor_14 {
+  content: url( "../sprites/first_floor/first_floor_14.png");
+}
+.first_floor_15 {
+  content: url( "../sprites/first_floor/first_floor_15.png");
+}
+.first_floor_16 {
+  content: url( "../sprites/first_floor/first_floor_16.png");
+}
+.first_floor_17 {
+  content: url( "../sprites/first_floor/first_floor_17.png");
+}
+.first_floor_18 {
+  content: url( "../sprites/first_floor/first_floor_18.png");
+}
+.first_floor_19 {
+  content: url( "../sprites/first_floor/first_floor_19.png");
+}
+.first_floor_20 {
+  content: url( "../sprites/first_floor/first_floor_20.png");
+}
+.first_floor_21 {
+  content: url( "../sprites/first_floor/first_floor_21.png");
+}
+.first_floor_22 {
+  content: url( "../sprites/first_floor/first_floor_22.png");
+}
+.first_floor_23 {
+  content: url( "../sprites/first_floor/first_floor_23.png");
+}
+.first_floor_24 {
+  content: url( "../sprites/first_floor/first_floor_24.png");
+}
+.first_floor_25 {
+  content: url( "../sprites/first_floor/first_floor_25.png");
+}
+.first_floor_26 {
+  content: url( "../sprites/first_floor/first_floor_26.png");
+}
+.first_floor_27 {
+  content: url( "../sprites/first_floor/first_floor_27.png");
+}
+.first_floor_28 {
+  content: url( "../sprites/first_floor/first_floor_28.png");
+}
+.first_floor_29 {
+  content: url( "../sprites/first_floor/first_floor_29.png");
+}
+.first_floor_30 {
+  content: url( "../sprites/first_floor/first_floor_30.png");
+}
+.first_floor_31 {
+  content: url( "../sprites/first_floor/first_floor_31.png");
+}
+.first_floor_32 {
+  content: url( "../sprites/first_floor/first_floor_32.png");
+}
+.first_floor_33 {
+  content: url( "../sprites/first_floor/first_floor_33.png");
+}
+.first_floor_34 {
+  content: url( "../sprites/first_floor/first_floor_34.png");
+}
+.first_floor_35 {
+  content: url( "../sprites/first_floor/first_floor_35.png");
+}
+
+
+
+
+
+.player_up {
+  content: url( "../sprites/player/playerUp.png");
+}
+.player_down {
+  content: url( "../sprites/player/playerDown.png");
+}
+.player_left {
+  content: url( "../sprites/player/playerLeft.png");
+}
+.player_right {
+  content: url( "../sprites/player/playerRight.png");
+}
+.player_up_step_r {
+  content: url( "../sprites/player/playerUpStepR.png");
+}
+.player_down_step_r {
+  content: url( "../sprites/player/playerDownStepR.png");
+}
+.player_left_step_r {
+  content: url( "../sprites/player/playerLeftStepR.png");
+}
+.player_right_step_r {
+  content: url( "../sprites/player/playerRightStepR.png");
+}
+.player_up_step_l {
+  content: url( "../sprites/player/playerUpStepL.png");
+}
+.player_down_step_l {
+  content: url( "../sprites/player/playerDownStepL.png");
+}
+.player_left_step_l {
+  content: url( "../sprites/player/playerLeftStepL.png");
+}
+.player_right_step_l {
+  content: url( "../sprites/player/playerRightStepL.png");
+}

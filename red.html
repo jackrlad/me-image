@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>jackrlad</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <main>
+      <div id="centre">
+        <a>
+          <div id="boy_box" >
+            <img id="grave" class="fade_out" src="sprites/grave.png" alt="a grave" />
+          </div>
+
+            <div class="text_container" id="looping_text">DAD!!</div>
+        </a>
+      </div>
+    </main>
+    <script>
+
+    if (window.location.href.endsWith(".html")) {
+    window.location.href = window.location.href.replace(".html", "");
+    }
+
+
+
+
+    const sentences = [
+      "DAD!",
+      "TALK TO ME!",
+      "I'M SO SORRY!!",
+      "I DIDN'T-",
+      "I DIDN'T MEAN FOR THIS!",
+      "THEY'RE BOTH GONE-!",
+      "WHAT DO I DO??",
+    ];
+
+    let current = 0;
+    const textEl = document.getElementById("looping_text");
+    const image = document.getElementById("grave");
+
+    function updateText() {
+      // Fade out
+      textEl.classList.remove("fade_in");
+      textEl.classList.add("fade_out");
+
+      setTimeout(() => {
+        // Change text
+        current = (current + 1) % sentences.length;
+        textEl.textContent = sentences[current];
+
+        // Fade in
+        textEl.classList.remove("fade_out");
+        textEl.classList.add("fade_in");
+      }, 500);
+    }
+
+    // Start with fade-in effect
+    textEl.classList.add("fade_in");
+
+    // Change sentence every 3 seconds
+    setInterval(updateText, 3000);
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.body.classList.add("fade-to-black");
+        image.classList.remove("fade_out");
+        image.classList.add("fade_in_full");
+      }, 100); // delay to ensure DOM is ready
+    });
+    </script>
+  </body>
+</html>

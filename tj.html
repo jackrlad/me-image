@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style/style_game.css">
+<body>
+<div id="centre">
+<div class="container">
+  <img id="-3,-3" width="80">
+  <img id="-3,-2" width="80">
+  <img id="-3,-1" width="80">
+  <img id="-3,0" width="80">
+  <img id="-3,1" width="80">
+  <img id="-3,2" width="80">
+  <img id="-3,3" width="80">
+  
+  <img id="-2,-3" width="80">
+  <img id="-2,-2" width="80">
+  <img id="-2,-1" width="80">
+  <img id="-2,0" width="80">
+  <img id="-2,1" width="80">
+  <img id="-2,2" width="80">
+  <img id="-2,3" width="80">
+
+  <img id="-1,-3" width="80">
+  <img id="-1,-2" width="80">
+  <img id="-1,-1" width="80">
+  <img id="-1,0" width="80">
+  <img id="-1,1" width="80">
+  <img id="-1,2" width="80">
+  <img id="-1,3" width="80">
+
+  <img id="0,-3" width="80">
+  <img id="0,-2" width="80">
+  <img id="0,-1" width="80">
+  <img id="0,0" width="80">
+  <img id="0,1" width="80">
+  <img id="0,2" width="80">
+  <img id="0,3" width="80">
+
+  <img id="1,-3" width="80">
+  <img id="1,-2" width="80">
+  <img id="1,-1" width="80">
+  <img id="1,0" width="80">
+  <img id="1,1" width="80">
+  <img id="1,2" width="80">
+  <img id="1,3" width="80">
+
+  <img id="2,-3" width="80">
+  <img id="2,-2" width="80">
+  <img id="2,-1" width="80">
+  <img id="2,0" width="80">
+  <img id="2,1" width="80">
+  <img id="2,2" width="80">
+  <img id="2,3" width="80">
+
+  <img id="3,-3" width="80">
+  <img id="3,-2" width="80">
+  <img id="3,-1" width="80">
+  <img id="3,0" width="80">
+  <img id="3,1" width="80">
+  <img id="3,2" width="80">
+  <img id="3,3" width="80">
+  <div>
+  <img id="player" class="player_up">
+
+  <div id="overlay-text-box" class="hidden">
+  This is your text box content.
+  </div>
+
+  </div>
+
+</div>
+</div>
+
+<script>
+  
+if (window.location.href.endsWith(".html")) {
+window.location.href = window.location.href.replace(".html", "");
+}
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const player = document.getElementById("player");
+  const textbox = document.getElementById("overlay-text-box");
+  const tiles = Array.from(document.querySelectorAll(".container > img"));
+  
+  var playable_area = [
+    ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+    ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+    ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+    ["#", "#", "#", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#", "#", "#", "#", "#", "#"],
+    ["#", "#", "#", " ", " ", "0", "1", "2", "7", "8", "9", " ", " ", " ", " ", " ", " ", "#", "#", "#", "#"],
+    ["#", "#", "#", " ", " ", "3", "3", "3", "a", "_", "b", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+    ["#", "#", "#", " ", " ", "4", "5", "6", "a", "_", "b", " ", "l", "m", "r", " ", " ", " ", "#", "#", "#"],
+    ["#", "#", "#", " ", " ", " ", " ", " ", "a", "_", "b", " ", " ", " ", " ", " ", "@", " ", "#", "#", "#"],
+    ["#", "#", "#", " ", " ", " ", " ", " ", "c", "d", "e", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+    ["#", "#", "#", " ", " ", " ", " ", " ", "f", "g", "h", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+    ["#", "#", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+    ["#", "#", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+    ["#", "#", "#", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+    ["#", "#", "#", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#", "#"],
+    ["#", "#", "#", "#", "#", "#", "#", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#", "#", "#", "#", "#"],
+    ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+    ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+    ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+    [],
+    [],
+    [],
+    ["tt", " 0", "ss", "oo", "c0", "t0", "t1", "t2", " z", " y"],
+    ["vv", " 1", "ff", "aa", "c1", " o", " p", " q", "t3", " x"],
+    [" 2", " 3", " 4", " 5", "c2", " r", " s", " t", "t4", " w"],
+    [" 6", " 7", " 8", " 9", " a", " b", " c", " d", " e", " f"],
+    [" g", " h", " i", " j", " k", "b1", "b2", " l", " m", " n"],
+    ["__", "__", " _", "__", "__", "__", "__", "__", "_z", "__"],
+    [],
+    [],
+    [],
+    ["___", "___", "___", "___", "_01", "_02"],
+    ["___", "___", "___", "___", " 03", " 04"],
+    ["___", "___", "___", "___", " 05", "_06"],
+    ["_07", "_08", "_09", "_09", " 10", "_11"],
+    [" 12", " 13", " 14", " 14", " 15", " 16"],
+    [" 35", " 21", " 20", " 20", " 21", " 22"],
+    ["___", "_37", "___", "___", "_36", "___"],
+    ["___", "___", "___", "___", "___", "___"],
+    ["___", "___", "___", "___", "___", "___"],
+    ["___", "___", "___", "___", "___", "___"],
+    ["___", "___", "___", "___", "___", "___"]
+  ];
+
+  let playerPos = [8, 16];
+
+  var interaction = false;
+  var stopMovement = false;
+  var permaStopMovement = false;
+  var keydown = false;
+  var location = "outside";
+
+  var pressedZ = true;
+  var gotFuel = false;
+
+  var step = false;
+  var stepDir = "right";
+
+  update_pos();
+  movePlayerToIndex();
+
+  document.addEventListener("keyup", (e) => {
+    if (keydown) {keydown = false}
+  })
+  document.addEventListener("keydown", (e) => {
+    if (!keydown) {
+      keydown = true;
+      const [row, col] = playerPos;
+
+      let newRow = row;
+      let newCol = col;
+
+      if (e.key === "ArrowUp" && !stopMovement && !permaStopMovement) {
+        if (step) {
+          player.removeAttribute("class");
+          player.classList.add("player_up");
+          step = false;
+        } else {
+          if (stepDir === "left") {
+            player.removeAttribute("class");
+            player.classList.add("player_up_step_l");
+            stepDir = "right"
+          } else if (stepDir === "right") {
+            player.removeAttribute("class");
+            player.classList.add("player_up_step_r");
+            stepDir = "left"
+          }
+          step = true;
+        }
+        newRow--;
+        interaction = false;
+      } else if (e.key === "ArrowDown" && !stopMovement && !permaStopMovement) {
+        if (step) {
+          player.removeAttribute("class");
+          player.classList.add("player_down");
+          step = false;
+        } else {
+          if (stepDir === "left") {
+            player.removeAttribute("class");
+            player.classList.add("player_down_step_l");
+            stepDir = "right"
+          } else if (stepDir === "right") {
+            player.removeAttribute("class");
+            player.classList.add("player_down_step_r");
+            stepDir = "left"
+          }
+          step = true;
+        }
+        newRow++;
+        interaction = false;
+      } else if (e.key === "ArrowLeft" && !stopMovement && !permaStopMovement) {
+        if (step) {
+          player.removeAttribute("class");
+          player.classList.add("player_left");
+          step = false;
+        } else {
+          if (stepDir === "left") {
+            player.removeAttribute("class");
+            player.classList.add("player_left_step_l");
+            stepDir = "right"
+          } else if (stepDir === "right") {
+            player.removeAttribute("class");
+            player.classList.add("player_left_step_r");
+            stepDir = "left"
+          }
+          step = true;
+        }
+        newCol--;
+        interaction = false;
+      } else if (e.key === "ArrowRight" && !stopMovement && !permaStopMovement) {
+        if (step) {
+          player.removeAttribute("class");
+          player.classList.add("player_right");
+          step = false;
+        } else {
+          if (stepDir === "left") {
+            player.removeAttribute("class");
+            player.classList.add("player_right_step_l");
+            stepDir = "right"
+          } else if (stepDir === "right") {
+            player.removeAttribute("class");
+            player.classList.add("player_right_step_r");
+            stepDir = "left"
+          }
+          step = true;
+        }
+        newCol++;
+        interaction = false;
+      } else if (e.key === "z") {
+        pressedZ = true;
+        if (interaction) {
+          interaction = false; 
+          textbox.removeAttribute("class"); 
+          textbox.classList.add("hidden"); 
+          stopMovement = false;
+        } else {interaction = true;}
+      } else return;
+
+      // can't walk into wall, stupid
+      if (
+        playable_area[newRow] &&
+        playable_area[newRow][newCol] &&
+        playable_area[newRow][newCol][0] === " " || 
+        playable_area[newRow][newCol] === "5"
+        ) {
+          playerPos = [newRow, newCol];
+          if (playerPos[0] === 6 && playerPos[1] === 6) {
+            playerPos = [25, 2];
+            location = "inside";
+              playSound("door_open.mp3");
+          } else if (playerPos[0] === 26 && playerPos[1] === 2) {
+            playerPos = [7, 6];
+            location = "outside";
+              playSound("door_close.mp3");
+          } else if (playerPos[0] === 21 && playerPos[1] === 8) {
+            playerPos = [31, 4];
+          } else if (playerPos[0] === 31 && playerPos[1] === 5) {
+            playerPos = [21, 9];
+          }
+          update_pos();
+          if (!pressedZ) {
+            if (location === "outside") {
+              playSound("grass_step.mp3");
+            } else {
+              playSound("inside_step.mp3");
+            }
+          }
+          movePlayerToIndex();
+          pressedZ = false;
+        } else {
+          console.log("Can't move into wall");
+        }
+        try_interaction("flower", "I didn't mean for this.");
+        try_interaction("table", "The party's off.");
+        try_interaction("ground_floor_5", "They're gathering dust...");
+        try_interaction("ground_floor_6", "Pshhhhhhhhh");
+        try_interaction("ground_floor_7", "It's cold.");
+        try_interaction("dads_room", "Dad's room.");
+        try_interaction("tv", "It won't turn on.");
+        try_interaction("sofa", "Comfy.");
+        try_interaction("your_room");
+        try_interaction("fuel_can", "I've found it.");
+        try_interaction("brothers_room_1", "Big brother's room.");
+        try_interaction("brothers_room_2", "...");
+        try_interaction("my_dresser", "My clothes.");
+        try_interaction("my_bed", "I'm not tired.");
+        try_interaction("his_bed", "His bed.");
+        if (gotFuel) {try_interaction("house");}
+      }
+  });
+
+  function burnYourHouseDown() {
+    playable_area = [    
+      ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+      ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+      ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+      ["#", "#", "#", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#", "#", "#", "#", "#", "#"],
+      ["#", "#", "#", " ", " ", "fire", "fire", "fire", "fire", "fire", "fire", " ", " ", " ", " ", " ", " ", "#", "#", "#", "#"],
+      ["#", "#", "#", " ", " ", "fire", "fire", "fire", "fire", "fire", "fire", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+      ["#", "#", "#", " ", " ", "fire", "fire", "fire", "fire", "fire", "fire", " ", "l", "m", "r", " ", " ", " ", "#", "#", "#"],
+      ["#", "#", "#", " ", " ", " ", " ", " ", "fire", "fire", "fire", " ", " ", " ", " ", " ", "@", " ", "#", "#", "#"],
+      ["#", "#", "#", " ", " ", " ", " ", " ", "fire", "fire", "fire", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+      ["#", "#", "#", " ", " ", " ", " ", " ", "fire", "fire", "fire", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+      ["#", "#", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+      ["#", "#", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+      ["#", "#", "#", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#"],
+      ["#", "#", "#", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#", "#"],
+      ["#", "#", "#", "#", "#", "#", "#", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#", "#", "#", "#", "#"],
+      ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+      ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+      ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+    ]
+    if (
+      player.classList.contains("player_up_step_l") 
+      || player.classList.contains("player_up_step_r")
+  ) {
+    player.removeAttribute("class");
+    player.classList.add("player_up");
+    } else if (
+      player.classList.contains("player_down_step_l") 
+      || player.classList.contains("player_down_step_r")
+  ) {
+    player.removeAttribute("class");
+    player.classList.add("player_down");
+    } else if (
+      player.classList.contains("player_left_step_l") 
+      || player.classList.contains("player_left_step_r")
+  ) {
+    player.removeAttribute("class");
+    player.classList.add("player_left");
+    } else if (
+      player.classList.contains("player_right_step_l") 
+      || player.classList.contains("player_right_step_r")
+  ) {
+    player.removeAttribute("class");
+    player.classList.add("player_right");
+    }
+    permaStopMovement = true;
+
+    setTimeout(function() {
+      playable_area = [
+        ["fire", "fire", "fire", "fire", "fire", "fire", "fire"],
+        ["fire", "fire", "fire", "fire", "fire", "fire", "fire"],
+        ["fire", "fire", "fire", "fire", "fire", "fire", "fire"],
+        ["fire", "fire", "fire", "fire", "fire", "fire", "fire"],
+        ["fire", "fire", "fire", "fire", "fire", "fire", "fire"],
+        ["fire", "fire", "fire", "fire", "fire", "fire", "fire"],
+        ["fire", "fire", "fire", "fire", "fire", "fire", "fire"]
+      ];
+      playerPos = [3, 3];
+      player.removeAttribute("class");
+      player.classList.add("fire");
+      update_pos();
+    }, 2000)
+  }
+
+  function playSound(sound) {
+    var currentSound = new Audio("sounds/" + sound).play()
+  }
+
+  function movePlayerToIndex() {
+    const tile = tiles[(tiles.length - 1) / 2];
+    const tileRect = tile.getBoundingClientRect(); //image pos 
+    const containerRect = document.querySelector(".container").getBoundingClientRect();
+
+    const offsetX = tileRect.left - containerRect.left;
+    const offsetY = tileRect.top - containerRect.top;
+
+    player.style.left = `${offsetX}px`;
+    player.style.top = `${offsetY}px`;
+  }
+
+  function update_pos() {
+    //byebye class
+    tiles.forEach((tile) => tile.className = "");
+
+    let index = 0;
+    for (let dy = -3; dy <= 3; dy++) {
+      for (let dx = -3; dx <= 3; dx++) {
+        const row = playerPos[0] + dy;
+        const col = playerPos[1] + dx;
+
+        if (row >= 0 && row < playable_area.length &&
+            col >= 0 && col < playable_area[0].length) {
+          const tileVal = playable_area[row][col];
+          if (tileVal === "#") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("tree");
+          } else if (tileVal === " ") {
+            tiles[index].classList.add("nonsolid");
+            tiles[index].classList.add("grass");
+          } else if (tileVal === "@") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("flower");
+          } else if (tileVal === "l") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("table_left");
+            tiles[index].classList.add("table");
+          } else if (tileVal === "m") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("table_middle");
+            tiles[index].classList.add("table");
+          } else if (tileVal === "r") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("table_right");
+            tiles[index].classList.add("table");
+          } 
+          
+          else if (tileVal === "0") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_0");  
+            tiles[index].classList.add("house");
+          } else if (tileVal === "1") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_1");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "2") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_2");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "3") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_3");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "4") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_4");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "5") {
+            tiles[index].classList.add("nonsolid");
+            tiles[index].classList.add("house_5");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "6") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_6");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "7") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_7");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "8") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_8");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "9") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_9");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "a") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_10");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "b") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_11");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "c") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_12");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "d") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_13");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "e") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_14");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "f") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_15");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "g") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_16");
+            tiles[index].classList.add("house");
+          } else if (tileVal === "h") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("house_17");
+            tiles[index].classList.add("house");
+          }
+
+          else if (tileVal === "tt") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_0");
+            tiles[index].classList.add("tv");
+          } else if (tileVal === " 0") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_1");
+          } else if (tileVal === "ss") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_2");
+            tiles[index].classList.add("sofa");
+          } else if (tileVal === "oo") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_3");
+            tiles[index].classList.add("sofa");
+          } else if (tileVal === "c0") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_4");
+          } else if (tileVal === "t0") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_5");
+          } else if (tileVal === "t1") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_6");
+          } else if (tileVal === "t2") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_7");
+          } else if (tileVal === " z") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_8");
+          } else if (tileVal === " y") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_9");
+          } else if (tileVal === "vv") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_10");
+            tiles[index].classList.add("tv");
+          } else if (tileVal === " 1") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_11");
+          } else if (tileVal === "ff") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_12");
+            tiles[index].classList.add("sofa");
+          } else if (tileVal === "aa") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_13");
+            tiles[index].classList.add("sofa");
+          } else if (tileVal === "c1") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_14");
+          } else if (tileVal === " o") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_15");
+          } else if (tileVal === " p") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_16");
+          } else if (tileVal === " q") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_17");
+          } else if (tileVal === "t3") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_18");
+          } else if (tileVal === " x") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_19");
+          } else if (tileVal === " 2") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_20");
+          } else if (tileVal === " 3") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_21");
+          } else if (tileVal === " 4") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_22");
+          } else if (tileVal === " 5") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_23");
+          } else if (tileVal === "c2") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_24");
+          } else if (tileVal === " r") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_25");
+          } else if (tileVal === " s") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_26");
+          } else if (tileVal === " t") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_27");
+          } else if (tileVal === "t4") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_28");
+          } else if (tileVal === " w") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_29");
+          } else if (tileVal === " 6") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_30");
+          } else if (tileVal === " 7") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_31");
+          } else if (tileVal === " 8") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_32");
+          } else if (tileVal === " 9") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_33");
+          } else if (tileVal === " a") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_34");
+          } else if (tileVal === " b") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_35");
+          } else if (tileVal === " c") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_36");
+          } else if (tileVal === " d") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_37");
+          } else if (tileVal === " e") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_38");
+          } else if (tileVal === " f") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_39");
+          } else if (tileVal === " g") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_40");
+          } else if (tileVal === " h") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_41");
+          } else if (tileVal === " i") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_42");
+          } else if (tileVal === " j") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_43");
+          } else if (tileVal === " k") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_44");
+          } else if (tileVal === "b1") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_45");
+          } else if (tileVal === "b2") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_46");
+          } else if (tileVal === " l") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_47");
+          } else if (tileVal === " m") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_48");
+          } else if (tileVal === " n") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("ground_floor_49");
+          } else if (tileVal === "_z") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("dads_room");
+          }
+
+          else if (tileVal === "_01") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_0");
+          } else if (tileVal === "_02") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_1");
+          } else if (tileVal === " 03") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_2");
+          } else if (tileVal === " 04") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_3");
+          } else if (tileVal === " 05") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_4");
+          } else if (tileVal === "_06") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_5");
+          } else if (tileVal === "_07") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_6");
+          } else if (tileVal === "_08") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_7");
+            tiles[index].classList.add("brothers_room_2");
+          } else if (tileVal === "_09") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_8");
+          } else if (tileVal === " 10") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_9");
+          } else if (tileVal === "_11") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_10");
+          } else if (tileVal === " 12") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_11");
+          } else if (tileVal === " 13") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_12");
+          } else if (tileVal === " 14") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_13");
+          } else if (tileVal === " 15") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_14");
+          } else if (tileVal === " 16") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_15");
+          } else if (tileVal === " 17") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_16");
+          } else if (tileVal === " 18") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_17");
+          } else if (tileVal === " 19") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_18");
+          } else if (tileVal === " 20") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_19");
+          } else if (tileVal === " 21") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_20");
+          } else if (tileVal === " 22") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_21");
+          } else if (tileVal === "_23") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_22");
+          } else if (tileVal === "_24") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_23");
+          } else if (tileVal === "_25") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_24");
+            tiles[index].classList.add("my_dresser");
+          } else if (tileVal === "_26") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_25");
+            tiles[index].classList.add("my_bed");
+          } else if (tileVal === "_27") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_26");
+            tiles[index].classList.add("fuel_can");
+          } else if (tileVal === "_28") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_27");
+            tiles[index].classList.add("my_bed");
+          } else if (tileVal === "_29") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_28");
+            tiles[index].classList.add("his_bed");
+          } else if (tileVal === "_30") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_29");
+            tiles[index].classList.add("his_bed");
+          } else if (tileVal === "_31") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_30");
+            tiles[index].classList.add("his_bed");
+          } else if (tileVal === "_32") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_31");
+            tiles[index].classList.add("his_bed");
+          } else if (tileVal === "_33") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_32");
+            tiles[index].classList.add("his_bed");
+          } else if (tileVal === "_34") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_33");
+            tiles[index].classList.add("his_bed");
+          } else if (tileVal === " 35") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_34");
+          } else if (tileVal === "_36") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("brothers_room_1");
+          } else if (tileVal === "_37") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("your_room");
+          } else if (tileVal === " 38") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("first_floor_35");
+          }
+
+          else if (tileVal === "fire") {
+            tiles[index].classList.add("solid");
+            tiles[index].classList.add("fire");
+          }
+        } else {
+          tiles[index].classList.add("solid"); //they're walls if not
+        }
+        index++;
+      }
+    }
+  }
+
+  function try_interaction(object, message = "") {
+    if (
+      (player.classList.contains("player_up") 
+    || player.classList.contains("player_up_step_l") 
+    || player.classList.contains("player_up_step_r"))
+    && interaction && document.getElementById("-1,0").classList.contains(object)
+  ) {
+      textbox.removeAttribute("class");
+      if (object === "house") { 
+        burnYourHouseDown()
+        update_pos()
+        textbox.classList.add("hidden");
+      } else {
+        textbox.textContent = message;
+        stopMovement = true
+      }
+    } else if (
+      (player.classList.contains("player_down") 
+    || player.classList.contains("player_down_step_l") 
+    || player.classList.contains("player_down_step_r"))
+    && interaction && document.getElementById("1,0").classList.contains(object)
+  ) {
+      textbox.removeAttribute("class");
+      if (object === "your_room") {
+        your_room = [
+          [" 17", " 18", " 19", " 20", " 21", " 22"],
+          ["_23", "   ", "_24", "___", "_36", "___"],
+          ["_25", "   ", "_26", "___", "___", "___"],
+          ["_27", "   ", "_28", "___", "___", "___"],
+          ["_29", "_30", "_31", "___", "___", "___"],
+          ["_32", "_33", "_34", "___", "___", "___"]
+        ]
+        gotFuel = true;
+        playSound("door_open.mp3");
+        for (var slice = 0; slice < 6; slice++) {
+          playable_area[35 + slice] = your_room[slice]
+        }
+        update_pos()
+        textbox.classList.add("hidden");
+      } else if (object === "house") { 
+        burnYourHouseDown()
+        update_pos()
+        textbox.classList.add("hidden");
+      } else {
+        textbox.textContent = message;
+        stopMovement = true
+      }
+    } else if (
+      (player.classList.contains("player_left") 
+    || player.classList.contains("player_left_step_l") 
+    || player.classList.contains("player_left_step_r"))
+    && interaction && document.getElementById("0,-1").classList.contains(object)
+  ) {
+      textbox.removeAttribute("class");
+      if (object === "fuel_can") {
+        playable_area[38][0] = " 38"
+        update_pos()
+      }
+      if (object === "house") { 
+        burnYourHouseDown()
+        update_pos()
+        textbox.classList.add("hidden");
+      } else {
+        textbox.textContent = message;
+        stopMovement = true
+      }
+    } else if (
+      (player.classList.contains("player_right") 
+      || player.classList.contains("player_right_step_l") 
+      || player.classList.contains("player_right_step_r"))
+    && interaction && document.getElementById("0,1").classList.contains(object)
+  ) {
+      textbox.removeAttribute("class");
+      if (object === "house") { 
+        burnYourHouseDown()
+        update_pos()
+        textbox.classList.add("hidden");
+      } else {
+        textbox.textContent = message;
+        stopMovement = true
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
+
+
