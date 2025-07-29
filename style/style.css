@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Raster Forge";
-  src: url(fonts/raster-forge-font/RasterForgeRegular-JpBgm.ttf) format("truetype");
+  src: url(../fonts/raster-forge-font/RasterForgeRegular-JpBgm.ttf) format("truetype");
 }
 
 body {
