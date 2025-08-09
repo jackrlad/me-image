@@ -41,40 +41,36 @@
     const image = document.getElementById("grave");
 
     function updateText() {
-      // Fade out
       textEl.classList.remove("fade_in");
       textEl.classList.add("fade_out");
 
       setTimeout(() => {
-        // Change text
         current = (current + 1) % sentences.length;
         textEl.textContent = sentences[current];
 
-        // Fade in
         textEl.classList.remove("fade_out");
         textEl.classList.add("fade_in");
       }, 500);
     }
 
-    // Start with fade-in effect
     textEl.classList.add("fade_in");
 
-    // Change sentence every 3 seconds
-    setInterval(updateText, 3000);
+    setInterval(updateText, 1);
 
     setTimeout(function() {
       window.loction.href = "tj.html"
-    }, 50000)
+    }, 300)
 
     window.addEventListener("load", () => {
       setTimeout(() => {
         document.body.classList.add("fade-to-black");
         image.classList.remove("fade_out");
         image.classList.add("fade_in_full");
-      }, 100); // delay to ensure DOM is ready
+      }, 100);
     });
     </script>
   </body>
 </html>
+
 
 
