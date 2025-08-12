@@ -22,32 +22,17 @@
     var dayAmounts = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
       
     function getCurrentDateDistance(dueDate) {
-      dueDate[1] = dueDate[1] - 1;
+      var currentDate = new Date(); 
       
-      var today = new Date();
-      var dd = today.getDate();
-      var mm = today.getMonth(); //January is 0!
-      var yyyy = today.getFullYear();
-
-      console.log(dueDate)
-      console.log(today.getDate, today.getMonth, today.getFullYear)
+      var diffMs = dueDate - currentDate;
       
-      var daysLeft = 0;
+      var daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
       
-      console.log(dueDate[1] - mm)
-      
-      for (let i = 0; i < dueDate[1] - mm; i++) {
-        daysLeft = daysLeft + dayAmounts[mm + i];
-        console.log(daysLeft)
-      }
-      daysLeft = daysLeft + (dd - dueDate[0]);
-      console.log(daysLeft)
-        
       const timer = document.getElementById("timer");
       timer.textContent = String(daysLeft) + " days left...";
     }
 
-    getCurrentDateDistance([3, 11, 2025]);
+    getCurrentDateDistance(new Date("2025-11-03"));
       
     </script>
   </body>
