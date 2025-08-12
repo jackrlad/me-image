@@ -76,8 +76,6 @@ body {
     font-size: 1.8rem;
     font-weight: 500;
     min-height: 60px;
-    opacity: 0.05;
-    transition: opacity 0.5s ease;
     color: white;
 }
 
@@ -92,3 +90,4 @@ body {
 .fade_in_full {
     opacity: 1;
 }
+
