@@ -18,6 +18,29 @@
     if (window.location.href.endsWith(".html")) {
     window.location.href = window.location.href.replace(".html", "");
     }
+
+    var dayAmounts = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+      
+    function getCurrentDateDistance(dueDate) {
+      dueDate[1] = dueDate[1] - 1;
+      
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth(); //January is 0!
+      var yyyy = today.getFullYear();
+      
+      var daysLeft = 0;
+      
+      for (let i = 0; i < dueDate - mm; i++) {
+        daysLeft = daysLeft + dayAmounts[mm + i];
+      }
+      daysLeft = daysLeft + (dd - dueDate[0])
+        
+      const timer = document.getElementById("text_container");
+      timer.textContent = String(daysLeft) + " days left...";
+    }
+
+    getCurrentDateDistance([3, 11, 2025])
       
     </script>
   </body>
