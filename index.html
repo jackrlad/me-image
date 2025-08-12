@@ -9,7 +9,7 @@
     <main>
       <div id="centre">
         <div id="boy_box">
-          <div class="text_container">Soon...</div>
+          <div class="text_container" id="timer">Soon...</div>
         </div>
       </div>
     </main>
@@ -34,13 +34,13 @@
       for (let i = 0; i < dueDate - mm; i++) {
         daysLeft = daysLeft + dayAmounts[mm + i];
       }
-      daysLeft = daysLeft + (dd - dueDate[0])
+      daysLeft = daysLeft + (dd - dueDate[0]);
         
-      const timer = document.getElementById("text_container");
+      const timer = document.getElementById("timer");
       timer.textContent = String(daysLeft) + " days left...";
     }
 
-    getCurrentDateDistance([3, 11, 2025])
+    getCurrentDateDistance([3, 11, 2025]);
       
     </script>
   </body>
