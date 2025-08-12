@@ -28,13 +28,20 @@
       var dd = today.getDate();
       var mm = today.getMonth(); //January is 0!
       var yyyy = today.getFullYear();
+
+      console.log(dueDate)
+      console.log(today.getDate, today.getMonth, today.getFullYear)
       
       var daysLeft = 0;
       
-      for (let i = 0; i < dueDate - mm; i++) {
+      console.log(dueDate[1] - mm)
+      
+      for (let i = 0; i < dueDate[1] - mm; i++) {
         daysLeft = daysLeft + dayAmounts[mm + i];
+        console.log(daysLeft)
       }
       daysLeft = daysLeft + (dd - dueDate[0]);
+      console.log(daysLeft)
         
       const timer = document.getElementById("timer");
       timer.textContent = String(daysLeft) + " days left...";
