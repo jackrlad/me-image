@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<button id="plant" onclick="clickPlant()" style="cursor: pointer;">
+    <img src="sprites/rpg/tree.png"/>
+</button>
+<div id="counter">1</div>
+
+<script>
+
+class plantType {
+    constructor(name, ripeAge, seedProduceAmount) {
+        this.name = name;
+        this.ripeAge = ripeAge;
+        this.seedProduceAmount = seedProduceAmount;
+        this.age = 0;
+    }
+    grow() {
+        this.age++;
+        if(this.age > this.ripeAge) {
+            this.age = 0;
+            plantExists = false;
+            return this.seedProduceAmount;
+        } else {
+            return 0;
+        }
+    }
+}
+
+const plant = document.getElementById("plant");
+const counter = document.getElementById("counter");
+
+const grass = new plantType("grass", 3, 2);
+
+var seeds = 1;
+var currentPlant = grass;
+var plantExists;
+
+function update(){
+    counter.textContent = seeds
+}
+
+function clickPlant(){
+    if(!plantExists) {
+        seeds -= 1;
+    }
+    plantExists = true;
+    seeds += currentPlant.grow();
+}
+
+setInterval(update, 1);
+
+</script>
+</body>
+</html>

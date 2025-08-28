@@ -67,28 +67,28 @@ html, body {
 
 
 .grass {
-  content: url( "../sprites/tileFloor.gif");
+  content: url( "../sprites/rpg/tileFloor.gif");
 }
 .bricks {
-  content: url( "../sprites/tileWall.png");
+  content: url( "../sprites/rpg/tileWall.png");
 }
 .tree {
-  content: url( "../sprites/tree.png");
+  content: url( "../sprites/rpg/tree.png");
 }
 .flower {
-  content: url( "../sprites/flower.png");
+  content: url( "../sprites/rpg/flower.png");
 }
 .table_left {
-  content: url( "../sprites/table_left.png");
+  content: url( "../sprites/rpg/table_left.png");
 }
 .table_middle {
-  content: url( "../sprites/table_middle.png");
+  content: url( "../sprites/rpg/table_middle.png");
 }
 .table_right {
-  content: url( "../sprites/table_right.png");
+  content: url( "../sprites/rpg/table_right.png");
 }
 .fire {
-  content: url( "../sprites/fire.gif");
+  content: url( "../sprites/rpg/fire.gif");
 }
 
 
@@ -96,58 +96,58 @@ html, body {
 
 
 .house_0 {
-  content: url( "../sprites/house/house_0.png");
+  content: url( "../sprites/rpg/house/house_0.png");
 }
 .house_1 {
-  content: url( "../sprites/house/house_1.png");
+  content: url( "../sprites/rpg/house/house_1.png");
 }
 .house_2 {
-  content: url( "../sprites/house/house_2.png");
+  content: url( "../sprites/rpg/house/house_2.png");
 }
 .house_3 {
-  content: url( "../sprites/house/house_3.png");
+  content: url( "../sprites/rpg/house/house_3.png");
 }
 .house_4 {
-  content: url( "../sprites/house/house_4.png");
+  content: url( "../sprites/rpg/house/house_4.png");
 }
 .house_5 {
-  content: url( "../sprites/house/house_5.png");
+  content: url( "../sprites/rpg/house/house_5.png");
 }
 .house_6 {
-  content: url( "../sprites/house/house_6.png");
+  content: url( "../sprites/rpg/house/house_6.png");
 }
 .house_7 {
-  content: url( "../sprites/house/house_7.png");
+  content: url( "../sprites/rpg/house/house_7.png");
 }
 .house_8 {
-  content: url( "../sprites/house/house_8.png");
+  content: url( "../sprites/rpg/house/house_8.png");
 }
 .house_9 {
-  content: url( "../sprites/house/house_9.png");
+  content: url( "../sprites/rpg/house/house_9.png");
 }
 .house_10 {
-  content: url( "../sprites/house/house_10.png");
+  content: url( "../sprites/rpg/house/house_10.png");
 }
 .house_11 {
-  content: url( "../sprites/house/house_11.png");
+  content: url( "../sprites/rpg/house/house_11.png");
 }
 .house_12 {
-  content: url( "../sprites/house/house_12.png");
+  content: url( "../sprites/rpg/house/house_12.png");
 }
 .house_13 {
-  content: url( "../sprites/house/house_13.png");
+  content: url( "../sprites/rpg/house/house_13.png");
 }
 .house_14 {
-  content: url( "../sprites/house/house_14.png");
+  content: url( "../sprites/rpg/house/house_14.png");
 }
 .house_15 {
-  content: url( "../sprites/house/house_15.png");
+  content: url( "../sprites/rpg/house/house_15.png");
 }
 .house_16 {
-  content: url( "../sprites/house/house_16.png");
+  content: url( "../sprites/rpg/house/house_16.png");
 }
 .house_17 {
-  content: url( "../sprites/house/house_17.png");
+  content: url( "../sprites/rpg/house/house_17.png");
 }
 
 
@@ -155,154 +155,154 @@ html, body {
 
 
 .ground_floor_0 {
-  content: url( "../sprites/ground_floor/ground_floor_0.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_0.png");
 }
 .ground_floor_1 {
-  content: url( "../sprites/ground_floor/ground_floor_1.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_1.png");
 }
 .ground_floor_2 {
-  content: url( "../sprites/ground_floor/ground_floor_2.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_2.png");
 }
 .ground_floor_3 {
-  content: url( "../sprites/ground_floor/ground_floor_3.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_3.png");
 }
 .ground_floor_4 {
-  content: url( "../sprites/ground_floor/ground_floor_4.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_4.png");
 }
 .ground_floor_5 {
-  content: url( "../sprites/ground_floor/ground_floor_5.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_5.png");
 }
 .ground_floor_6 {
-  content: url( "../sprites/ground_floor/ground_floor_6.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_6.png");
 }
 .ground_floor_7 {
-  content: url( "../sprites/ground_floor/ground_floor_7.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_7.png");
 }
 .ground_floor_8 {
-  content: url( "../sprites/ground_floor/ground_floor_8.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_8.png");
 }
 .ground_floor_9 {
-  content: url( "../sprites/ground_floor/ground_floor_9.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_9.png");
 }
 .ground_floor_10 {
-  content: url( "../sprites/ground_floor/ground_floor_10.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_10.png");
 }
 .ground_floor_11 {
-  content: url( "../sprites/ground_floor/ground_floor_11.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_11.png");
 }
 .ground_floor_12 {
-  content: url( "../sprites/ground_floor/ground_floor_12.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_12.png");
 }
 .ground_floor_13 {
-  content: url( "../sprites/ground_floor/ground_floor_13.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_13.png");
 }
 .ground_floor_14 {
-  content: url( "../sprites/ground_floor/ground_floor_14.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_14.png");
 }
 .ground_floor_15 {
-  content: url( "../sprites/ground_floor/ground_floor_15.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_15.png");
 }
 .ground_floor_16 {
-  content: url( "../sprites/ground_floor/ground_floor_16.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_16.png");
 }
 .ground_floor_17 {
-  content: url( "../sprites/ground_floor/ground_floor_17.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_17.png");
 }
 .ground_floor_18 {
-  content: url( "../sprites/ground_floor/ground_floor_18.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_18.png");
 }
 .ground_floor_19 {
-  content: url( "../sprites/ground_floor/ground_floor_19.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_19.png");
 }
 .ground_floor_20 {
-  content: url( "../sprites/ground_floor/ground_floor_20.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_20.png");
 }
 .ground_floor_21 {
-  content: url( "../sprites/ground_floor/ground_floor_21.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_21.png");
 }
 .ground_floor_22 {
-  content: url( "../sprites/ground_floor/ground_floor_22.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_22.png");
 }
 .ground_floor_23 {
-  content: url( "../sprites/ground_floor/ground_floor_23.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_23.png");
 }
 .ground_floor_24 {
-  content: url( "../sprites/ground_floor/ground_floor_24.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_24.png");
 }
 .ground_floor_25 {
-  content: url( "../sprites/ground_floor/ground_floor_25.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_25.png");
 }
 .ground_floor_26 {
-  content: url( "../sprites/ground_floor/ground_floor_26.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_26.png");
 }
 .ground_floor_27 {
-  content: url( "../sprites/ground_floor/ground_floor_27.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_27.png");
 }
 .ground_floor_28 {
-  content: url( "../sprites/ground_floor/ground_floor_28.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_28.png");
 }
 .ground_floor_29 {
-  content: url( "../sprites/ground_floor/ground_floor_29.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_29.png");
 }
 .ground_floor_30 {
-  content: url( "../sprites/ground_floor/ground_floor_30.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_30.png");
 }
 .ground_floor_31 {
-  content: url( "../sprites/ground_floor/ground_floor_31.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_31.png");
 }
 .ground_floor_32 {
-  content: url( "../sprites/ground_floor/ground_floor_32.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_32.png");
 }
 .ground_floor_33 {
-  content: url( "../sprites/ground_floor/ground_floor_33.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_33.png");
 }
 .ground_floor_34 {
-  content: url( "../sprites/ground_floor/ground_floor_34.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_34.png");
 }
 .ground_floor_35 {
-  content: url( "../sprites/ground_floor/ground_floor_35.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_35.png");
 }
 .ground_floor_36 {
-  content: url( "../sprites/ground_floor/ground_floor_36.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_36.png");
 }
 .ground_floor_37 {
-  content: url( "../sprites/ground_floor/ground_floor_37.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_37.png");
 }
 .ground_floor_38 {
-  content: url( "../sprites/ground_floor/ground_floor_38.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_38.png");
 }
 .ground_floor_39 {
-  content: url( "../sprites/ground_floor/ground_floor_39.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_39.png");
 }
 .ground_floor_40 {
-  content: url( "../sprites/ground_floor/ground_floor_40.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_40.png");
 }
 .ground_floor_41 {
-  content: url( "../sprites/ground_floor/ground_floor_41.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_41.png");
 }
 .ground_floor_42 {
-  content: url( "../sprites/ground_floor/ground_floor_42.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_42.png");
 }
 .ground_floor_43 {
-  content: url( "../sprites/ground_floor/ground_floor_43.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_43.png");
 }
 .ground_floor_44 {
-  content: url( "../sprites/ground_floor/ground_floor_44.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_44.png");
 }
 .ground_floor_45 {
-  content: url( "../sprites/ground_floor/ground_floor_45.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_45.png");
 }
 .ground_floor_46 {
-  content: url( "../sprites/ground_floor/ground_floor_46.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_46.png");
 }
 .ground_floor_47 {
-  content: url( "../sprites/ground_floor/ground_floor_47.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_47.png");
 }
 .ground_floor_48 {
-  content: url( "../sprites/ground_floor/ground_floor_48.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_48.png");
 }
 .ground_floor_49 {
-  content: url( "../sprites/ground_floor/ground_floor_49.png");
+  content: url( "../sprites/rpg/ground_floor/ground_floor_49.png");
 }
 
 
@@ -310,112 +310,112 @@ html, body {
 
 
 .first_floor_0 {
-  content: url( "../sprites/first_floor/first_floor_0.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_0.png");
 }
 .first_floor_1 {
-  content: url( "../sprites/first_floor/first_floor_1.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_1.png");
 }
 .first_floor_2 {
-  content: url( "../sprites/first_floor/first_floor_2.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_2.png");
 }
 .first_floor_3 {
-  content: url( "../sprites/first_floor/first_floor_3.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_3.png");
 }
 .first_floor_4 {
-  content: url( "../sprites/first_floor/first_floor_4.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_4.png");
 }
 .first_floor_5 {
-  content: url( "../sprites/first_floor/first_floor_5.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_5.png");
 }
 .first_floor_6 {
-  content: url( "../sprites/first_floor/first_floor_6.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_6.png");
 }
 .first_floor_7 {
-  content: url( "../sprites/first_floor/first_floor_7.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_7.png");
 }
 .first_floor_8 {
-  content: url( "../sprites/first_floor/first_floor_8.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_8.png");
 }
 .first_floor_9 {
-  content: url( "../sprites/first_floor/first_floor_9.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_9.png");
 }
 .first_floor_10 {
-  content: url( "../sprites/first_floor/first_floor_10.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_10.png");
 }
 .first_floor_11 {
-  content: url( "../sprites/first_floor/first_floor_11.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_11.png");
 }
 .first_floor_12 {
-  content: url( "../sprites/first_floor/first_floor_12.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_12.png");
 }
 .first_floor_13 {
-  content: url( "../sprites/first_floor/first_floor_13.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_13.png");
 }
 .first_floor_14 {
-  content: url( "../sprites/first_floor/first_floor_14.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_14.png");
 }
 .first_floor_15 {
-  content: url( "../sprites/first_floor/first_floor_15.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_15.png");
 }
 .first_floor_16 {
-  content: url( "../sprites/first_floor/first_floor_16.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_16.png");
 }
 .first_floor_17 {
-  content: url( "../sprites/first_floor/first_floor_17.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_17.png");
 }
 .first_floor_18 {
-  content: url( "../sprites/first_floor/first_floor_18.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_18.png");
 }
 .first_floor_19 {
-  content: url( "../sprites/first_floor/first_floor_19.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_19.png");
 }
 .first_floor_20 {
-  content: url( "../sprites/first_floor/first_floor_20.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_20.png");
 }
 .first_floor_21 {
-  content: url( "../sprites/first_floor/first_floor_21.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_21.png");
 }
 .first_floor_22 {
-  content: url( "../sprites/first_floor/first_floor_22.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_22.png");
 }
 .first_floor_23 {
-  content: url( "../sprites/first_floor/first_floor_23.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_23.png");
 }
 .first_floor_24 {
-  content: url( "../sprites/first_floor/first_floor_24.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_24.png");
 }
 .first_floor_25 {
-  content: url( "../sprites/first_floor/first_floor_25.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_25.png");
 }
 .first_floor_26 {
-  content: url( "../sprites/first_floor/first_floor_26.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_26.png");
 }
 .first_floor_27 {
-  content: url( "../sprites/first_floor/first_floor_27.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_27.png");
 }
 .first_floor_28 {
-  content: url( "../sprites/first_floor/first_floor_28.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_28.png");
 }
 .first_floor_29 {
-  content: url( "../sprites/first_floor/first_floor_29.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_29.png");
 }
 .first_floor_30 {
-  content: url( "../sprites/first_floor/first_floor_30.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_30.png");
 }
 .first_floor_31 {
-  content: url( "../sprites/first_floor/first_floor_31.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_31.png");
 }
 .first_floor_32 {
-  content: url( "../sprites/first_floor/first_floor_32.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_32.png");
 }
 .first_floor_33 {
-  content: url( "../sprites/first_floor/first_floor_33.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_33.png");
 }
 .first_floor_34 {
-  content: url( "../sprites/first_floor/first_floor_34.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_34.png");
 }
 .first_floor_35 {
-  content: url( "../sprites/first_floor/first_floor_35.png");
+  content: url( "../sprites/rpg/first_floor/first_floor_35.png");
 }
 
 
@@ -423,38 +423,38 @@ html, body {
 
 
 .player_up {
-  content: url( "../sprites/player/playerUp.png");
+  content: url( "../sprites/rpg/player/playerUp.png");
 }
 .player_down {
-  content: url( "../sprites/player/playerDown.png");
+  content: url( "../sprites/rpg/player/playerDown.png");
 }
 .player_left {
-  content: url( "../sprites/player/playerLeft.png");
+  content: url( "../sprites/rpg/player/playerLeft.png");
 }
 .player_right {
-  content: url( "../sprites/player/playerRight.png");
+  content: url( "../sprites/rpg/player/playerRight.png");
 }
 .player_up_step_r {
-  content: url( "../sprites/player/playerUpStepR.png");
+  content: url( "../sprites/rpg/player/playerUpStepR.png");
 }
 .player_down_step_r {
-  content: url( "../sprites/player/playerDownStepR.png");
+  content: url( "../sprites/rpg/player/playerDownStepR.png");
 }
 .player_left_step_r {
-  content: url( "../sprites/player/playerLeftStepR.png");
+  content: url( "../sprites/rpg/player/playerLeftStepR.png");
 }
 .player_right_step_r {
-  content: url( "../sprites/player/playerRightStepR.png");
+  content: url( "../sprites/rpg/player/playerRightStepR.png");
 }
 .player_up_step_l {
-  content: url( "../sprites/player/playerUpStepL.png");
+  content: url( "../sprites/rpg/player/playerUpStepL.png");
 }
 .player_down_step_l {
-  content: url( "../sprites/player/playerDownStepL.png");
+  content: url( "../sprites/rpg/player/playerDownStepL.png");
 }
 .player_left_step_l {
-  content: url( "../sprites/player/playerLeftStepL.png");
+  content: url( "../sprites/rpg/player/playerLeftStepL.png");
 }
 .player_right_step_l {
-  content: url( "../sprites/player/playerRightStepL.png");
+  content: url( "../sprites/rpg/player/playerRightStepL.png");
 }
