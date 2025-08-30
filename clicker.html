@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style_clicker.css">
-    <title>Document</title>
+    <title id="title"></title>
 </head>
 <body>
 
@@ -93,6 +93,7 @@ class upgradeType {
 }
 
 const plant = document.getElementById("plant");
+const title = document.getElementById("title");
 const seedCounter = document.getElementById("seed-counter");
 const plantPlotCounter = document.getElementById("plant-plot-counter");
 
@@ -109,10 +110,12 @@ function wake(){
 }
 
 function update(){
+    if(seeds === 1) {title.textContent = Math.floor(seeds)+ " seed";}
+    else{title.textContent = Math.floor(seeds)+ " seeds";}
     if(seeds === 1) {seedCounter.textContent = Math.floor(seeds)+ " seed";}
     else{seedCounter.textContent = Math.floor(seeds)+ " seeds";}
-    if(plantPlot.getAmountOwned() === 1) {plantPlotCounter.textContent = Math.floor(plantPlot.getAmountOwned())+ " plant pot";}
-    else{plantPlotCounter.textContent = Math.floor(plantPlot.getAmountOwned())+ " plant pots";}
+    if(plantPlot.getAmountOwned() === 1) {plantPlotCounter.textContent = Math.floor(plantPlot.getAmountOwned())+ " plant plot";}
+    else{plantPlotCounter.textContent = Math.floor(plantPlot.getAmountOwned())+ " plant plots";}
 }
 
 function clickPlant(){
