@@ -3,47 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style_clicker.css">
     <title>Document</title>
 </head>
 <body>
 
-<button id="plant" onclick="clickPlant()" style="cursor: pointer;">
-    <img src="sprites/rpg/tree.png"/>
+<div id="main-outer-div">
+
+<button id="plant-button" onclick="clickPlant()" style="cursor: pointer; z-index: 1000;">
+    <img style="width: 500;" class="empty" id="plant"/>
 </button>
-<div id="counter">1</div>
+
+<div style="position: absolute;">
+    <div id="positional-div" style="top: -50px; left: 0px;">
+        <div id="seed-counter"></div>
+    </div>
+</div>
+
+<div style="position: absolute;">
+    <div id="positional-div" style="top: 80px; left: 0px;">
+        <button id="plant-button" onclick="plantPlot.buy(1)" style="cursor: pointer; z-index: 1000;">
+            <div>Plant Plots</div>
+        </button>
+    </div>
+</div>
+
+<div style="position: absolute;">
+    <div id="positional-div" style="top: 100px; left: 0px;">
+        <div id="plant-plot-counter"></div>
+    </div>
+</div>
+
+<div style="position: absolute;">
+    <line id="connector" x1="-50" y1="0" x2="80" y2="0" 
+                stroke="black" stroke-width="2"/>
+</div>
+
+</div>
 
 <script>
 
 class plantType {
-    constructor(name, ripeAge, seedProduceAmount) {
+    constructor(name, ripeAge, seedProduceAmount, sprites) {
         this.name = name;
         this.ripeAge = ripeAge;
         this.seedProduceAmount = seedProduceAmount;
+        this.sprites = sprites;
         this.age = 0;
     }
     grow() {
         this.age++;
+        plant.removeAttribute("class")
+        plant.classList.add(this.sprites+String(this.age));
         if(this.age > this.ripeAge) {
             this.age = 0;
             plantExists = false;
+            plant.removeAttribute("class")
+            plant.classList.add("empty");
             return this.seedProduceAmount;
         } else {
             return 0;
         }
     }
+    getSeedProduceAmount() {
+        return(this.seedProduceAmount)
+    }
+}
+
+class upgradeType {
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+        this.amountOwned = 0;
+        this.growthConstant = 1;
+    }
+    getAmountOwned() {
+        return(this.amountOwned);
+    }
+    buy(amount) {
+        if(seeds >= this.price*amount) {
+            seeds -= this.price*amount;
+            this.amountOwned += amount;
+        }
+    }
+    produceEquation(equation, timeConstant) {
+        seeds += (equation * this.amountOwned) / timeConstant;
+        console.log(equation * this.amountOwned);
+    }
 }
 
 const plant = document.getElementById("plant");
-const counter = document.getElementById("counter");
+const seedCounter = document.getElementById("seed-counter");
+const plantPlotCounter = document.getElementById("plant-plot-counter");
 
-const grass = new plantType("grass", 3, 2);
+const plantPlot = new upgradeType("plant plot", 5)
+const grass = new plantType("grass", 3, 2, "grass");
 
 var seeds = 1;
 var currentPlant = grass;
 var plantExists;
 
+function wake(){
+    setInterval(update, 10);
+    setInterval(() => plantPlot.produceEquation(currentPlant.getSeedProduceAmount() - 1, 100), 10);
+}
+
 function update(){
-    counter.textContent = seeds
+    if(seeds === 1) {seedCounter.textContent = Math.floor(seeds)+ " seed";}
+    else{seedCounter.textContent = Math.floor(seeds)+ " seeds";}
+    if(plantPlot.getAmountOwned() === 1) {plantPlotCounter.textContent = Math.floor(plantPlot.getAmountOwned())+ " plant pot";}
+    else{plantPlotCounter.textContent = Math.floor(plantPlot.getAmountOwned())+ " plant pots";}
 }
 
 function clickPlant(){
@@ -54,7 +123,7 @@ function clickPlant(){
     seeds += currentPlant.grow();
 }
 
-setInterval(update, 1);
+wake();
 
 </script>
 </body>
