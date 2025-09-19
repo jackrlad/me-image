@@ -12,8 +12,20 @@
   content: url( "../sprites/clicker/grass3.png");
 }
 
+@font-face {
+  font-family: "Raster Forge";
+  src: url(../fonts/raster-forge-font/RasterForgeRegular-JpBgm.ttf) format("truetype");
+}
+
+div {
+  color: #000000;
+  font-family: "Raster Forge", monospace;
+  padding: 0;
+  margin: 0;
+}
+
 #main-outer-div {
-  background-color: #8d6d8d;
+  background-color: #4b5c4d;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +40,33 @@
 }
 
 #plant-button {
-  background-color: #0000000f; /* Green */
+  background-color: #0000003f;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#upgrade-button-outer {
+  background-color: #0000003f;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border: none;
+  text-align: right;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 11px;
+}
+
+#upgrade-button-inner {
+  background-color: #0000003f;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
   border: none;
   text-align: center;
   text-decoration: none;

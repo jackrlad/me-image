@@ -17,20 +17,25 @@
 <div style="position: absolute;">
     <div id="positional-div" style="top: -50px; left: 0px;">
         <div id="seed-counter"></div>
+        <div id="seed-per-second"></div>
     </div>
 </div>
 
 <div style="position: absolute;">
-    <div id="positional-div" style="top: 80px; left: 0px;">
-        <button id="plant-button" onclick="plantPlot.buy(1)" style="cursor: pointer; z-index: 1000;">
-            <div>Plant Plots</div>
+    <div id="positional-div" style="top: 90px; left: 0px;">
+        <button id="upgrade-button-outer" onclick="plantPlot.buy(1)" style="cursor: pointer; z-index: 1000;">
+            <div id="upgrade-button-inner">
+                <div id="plant-plot-counter-part-1"></div>
+                <div id="plant-plot-counter-part-2"></div>
+            </div>
+            <div id="plant-plot-price"></div>
         </button>
     </div>
 </div>
 
 <div style="position: absolute;">
-    <div id="positional-div" style="top: 100px; left: 0px;">
-        <div id="plant-plot-counter"></div>
+    <div id="positional-div" style="top: 120px; left: 500px;">
+        <div>hi</div>
     </div>
 </div>
 
@@ -71,42 +76,57 @@ class plantType {
 }
 
 class upgradeType {
-    constructor(name, price) {
+    constructor(name, startingPriceConstant, equation) {
         this.name = name;
-        this.price = price;
+        this.startingPriceConstant = startingPriceConstant;
+        this.equation = equation
         this.amountOwned = 0;
         this.growthConstant = 1;
     }
     getAmountOwned() {
         return(this.amountOwned);
     }
+    getPrice() {
+        return(Math.floor((0.25 * (this.amountOwned + 10) * this.amountOwned + 3) * this.startingPriceConstant));
+    }
     buy(amount) {
-        if(seeds >= this.price*amount) {
-            seeds -= this.price*amount;
+        var price = this.getPrice();
+        if(seeds >= price*amount) {
+            seeds -= price*amount;
             this.amountOwned += amount;
         }
     }
-    produceEquation(equation, timeConstant) {
-        seeds += (equation * this.amountOwned) / timeConstant;
-        console.log(equation * this.amountOwned);
+    seedsPerSecondCalulation() {
+        return(this.equation * this.amountOwned);
+    }
+    produceEquation(timeConstant) {
+        seeds += (this.seedsPerSecondCalulation()) / timeConstant;
     }
 }
 
 const plant = document.getElementById("plant");
 const title = document.getElementById("title");
 const seedCounter = document.getElementById("seed-counter");
-const plantPlotCounter = document.getElementById("plant-plot-counter");
+const seedPerSecondDisplay = document.getElementById("seed-per-second");
 
-const plantPlot = new upgradeType("plant plot", 5)
+const plantPlotCounterPart1 = document.getElementById("plant-plot-counter-part-1");
+const plantPlotCounterPart2 = document.getElementById("plant-plot-counter-part-2");
+const plantPlotPrice = document.getElementById("plant-plot-price");
+
 const grass = new plantType("grass", 3, 2, "grass");
+var currentPlant = grass;
+
+const plantPlot = new upgradeType("plant plot", 1.7, currentPlant.getSeedProduceAmount() - 1)
 
 var seeds = 1;
-var currentPlant = grass;
+var previousSeeds = 0;
+var seedsPerSecond = 0;
 var plantExists;
 
 function wake(){
-    setInterval(update, 10);
-    setInterval(() => plantPlot.produceEquation(currentPlant.getSeedProduceAmount() - 1, 100), 10);
+    setInterval(() => update(), 10);
+    setInterval(() => seedPerSecondCalculator(), 1000);
+    setInterval(() => plantPlot.produceEquation(100), 10);
 }
 
 function update(){
@@ -114,8 +134,19 @@ function update(){
     else{title.textContent = Math.floor(seeds)+ " seeds";}
     if(seeds === 1) {seedCounter.textContent = Math.floor(seeds)+ " seed";}
     else{seedCounter.textContent = Math.floor(seeds)+ " seeds";}
-    if(plantPlot.getAmountOwned() === 1) {plantPlotCounter.textContent = Math.floor(plantPlot.getAmountOwned())+ " plant plot";}
-    else{plantPlotCounter.textContent = Math.floor(plantPlot.getAmountOwned())+ " plant plots";}
+
+    if(plantPlot.getAmountOwned() === 1) {plantPlotCounterPart1.textContent = Math.floor(plantPlot.getAmountOwned());}
+    else{plantPlotCounterPart1.textContent = Math.floor(plantPlot.getAmountOwned());}
+    if(plantPlot.getAmountOwned() === 1) {plantPlotCounterPart2.textContent = "Plant Plot";}
+    else{plantPlotCounterPart2.textContent = "Plant Plots";}
+    plantPlotPrice.textContent = plantPlot.getPrice() + " seeds";
+}
+
+function seedPerSecondCalculator() {
+    seedsPerSecond = 0;
+    seedsPerSecond += plantPlot.seedsPerSecondCalulation();
+    if(seedsPerSecond === 1){seedPerSecondDisplay.textContent = seedsPerSecond + " seed per second";}
+    else{seedPerSecondDisplay.textContent = seedsPerSecond + " seeds per second";}
 }
 
 function clickPlant(){
