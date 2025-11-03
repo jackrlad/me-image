@@ -4,30 +4,36 @@
     <meta charset="UTF-8" />
     <title>jackrlad</title>
     <link href="style/style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/gif" href="sprites/profile_with_background.gif"/>
   </head>
   <body id="black_body">
     <main>
       <div id="centre">
         <div id="boy_box">
+          <a href="https://jackrlad.com/tj">
+            <img id="boy" class="boy_blink" src="sprites/profile.gif" alt="a father" />
+            <img id="boy" class="boy_cross" src="sprites/cross.png" alt="a man" />
+          </a>
+          </div>
+        <div id="boy_box">
           <div class="text_container" id="timer">Soon...</div>
+          <div class="text_container" style="font-size: 52px">jackrlad.com</div>
+        </div>
+        <div id="boy_box">
         </div>
       </div>
     </main>
     <script>
-
-    if (window.location.href.endsWith(".html")) {
-    window.location.href = window.location.href.replace(".html", "");
-    }
       
     function getCurrentDateDistance(dueDate) {
       var currentDate = new Date(); 
       
-      var diffMs = dueDate - currentDate;
+      var diffMs = currentDate - dueDate;
       
-      var daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+      var daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24)) - 1;
       
       const timer = document.getElementById("timer");
-      timer.textContent = String(daysLeft) + " days left.";
+      timer.textContent = String(daysLeft) + " days ago.";
     }
 
     getCurrentDateDistance(new Date("2025-11-03"));

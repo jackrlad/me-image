@@ -19,6 +19,11 @@ html, body {
   overflow: hidden;
 }
 
+#keys {
+  image-rendering: pixelated;
+  position: relative;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(7, 80px);
@@ -45,6 +50,18 @@ html, body {
   color: white;
   padding: 10px;
   text-align: left;
+  font-size: 26px;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+#key-box {
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+  right: 10px;
+  color: white;
+  text-align: center;
   font-size: 26px;
   border-radius: 8px;
   z-index: 10;
