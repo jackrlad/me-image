@@ -65,11 +65,11 @@ body {
   visibility: hidden;
 }
 
-#boy_box:hover .boy_blink {
+#boy_hover:hover .boy_blink {
   visibility: hidden;
 }
 
-#boy_box:hover .boy_cross {
+#boy_hover:hover .boy_cross {
   visibility: visible;
 }
 
