@@ -11,8 +11,8 @@
 
     <div class="header">
         <div>
-        <a><button class="navigation_location">Home</button></a>
-        <a href="about.html"><button class="navigation">About</button></a>
+        <a href="index.html"><button class="navigation">Home</button></a>
+        <a><button class="navigation_location">About</button></a>
         <a href="cv.html"><button class="navigation">Resume</button></a>
         <a href="stuff.html"><button class="navigation">Projects</button></a>
         <a href="help.html"><button class="navigation">FAQ / Contact</button></a>
@@ -27,8 +27,13 @@
           </a>
           </div>
         <div id="boy_box">
-          <div class="text_container_large">jackrlad.com</div>
-          <div class="text_container" id="timer">Soon...</div>
+          <div class="text_container_large">About jackrlad</div>
+          <div class="text_container">I find Video Games a form of <i>art.</i> 
+            I know many may not have the same sentiment, enjoying them strickly for that rush they get just <i>killing the bad guys,</i> but... <br><br>
+            A <i>lot</i> of games I've seen in my time present the most <i>beautiful</i> worlds and stories. Discovering that- <i>experiencing</i> it all is why I am a developer. <br><br>
+            I do this hoping, I can give you even a <i>fraction</i> of what I've experienced.<br><br>
+            Even just for a <i>moment.</i>
+          </div>
         </div>
         <div id="boy_box">
         </div>
@@ -36,19 +41,10 @@
     </main>
     <script>
 
-    function getCurrentDateDistance(dueDate) {
-      var currentDate = new Date(); 
-      
-      var diffMs = currentDate - dueDate;
-      
-      var daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24)) - 1;
-      
-      const timer = document.getElementById("timer");
-      timer.textContent = String(daysLeft) + " days ago...";
+    if (window.location.href.endsWith(".html")) {
+    window.location.href = window.location.href.replace(".html", "");
     }
 
-    getCurrentDateDistance(new Date("2025-11-03"));
-      
     </script>
   </body>
 </html>

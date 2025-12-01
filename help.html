@@ -11,11 +11,11 @@
 
     <div class="header">
         <div>
-        <a><button class="navigation_location">Home</button></a>
+        <a href="index.html"><button class="navigation">Home</button></a>
         <a href="about.html"><button class="navigation">About</button></a>
         <a href="cv.html"><button class="navigation">Resume</button></a>
         <a href="stuff.html"><button class="navigation">Projects</button></a>
-        <a href="help.html"><button class="navigation">FAQ / Contact</button></a>
+        <a><button class="navigation_location">FAQ / Contact</button></a>
         </div>
     </div>
 
@@ -27,8 +27,11 @@
           </a>
           </div>
         <div id="boy_box">
-          <div class="text_container_large">jackrlad.com</div>
-          <div class="text_container" id="timer">Soon...</div>
+          <div class="text_container_large">faq / contact</div>
+          <a href="mailto:jackrlad.com@gmail.com" target="_blank"><button class="text_container_button">jackrlad.com@gmail.com</button></a>
+          <div class="text_container"><br></div>
+          <div class="text_container_small_bold">- Can I pet the otter?</div>
+          <div class="text_container_small">(crying) This faq is over!</div>
         </div>
         <div id="boy_box">
         </div>
@@ -36,19 +39,10 @@
     </main>
     <script>
 
-    function getCurrentDateDistance(dueDate) {
-      var currentDate = new Date(); 
-      
-      var diffMs = currentDate - dueDate;
-      
-      var daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24)) - 1;
-      
-      const timer = document.getElementById("timer");
-      timer.textContent = String(daysLeft) + " days ago...";
+    if (window.location.href.endsWith(".html")) {
+    window.location.href = window.location.href.replace(".html", "");
     }
 
-    getCurrentDateDistance(new Date("2025-11-03"));
-      
     </script>
   </body>
 </html>

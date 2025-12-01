@@ -11,9 +11,9 @@
 
     <div class="header">
         <div>
-        <a><button class="navigation_location">Home</button></a>
+        <a href="index.html"><button class="navigation">Home</button></a>
         <a href="about.html"><button class="navigation">About</button></a>
-        <a href="cv.html"><button class="navigation">Resume</button></a>
+        <a><button button class="navigation_location">Resume</button></a>
         <a href="stuff.html"><button class="navigation">Projects</button></a>
         <a href="help.html"><button class="navigation">FAQ / Contact</button></a>
         </div>
@@ -27,8 +27,8 @@
           </a>
           </div>
         <div id="boy_box">
-          <div class="text_container_large">jackrlad.com</div>
-          <div class="text_container" id="timer">Soon...</div>
+          <div class="text_container_large">Resume</div>
+          <a href="jackrlad CV.pdf"><button class="text_container_button">Click here for my Resume!</button></a>
         </div>
         <div id="boy_box">
         </div>
@@ -36,19 +36,10 @@
     </main>
     <script>
 
-    function getCurrentDateDistance(dueDate) {
-      var currentDate = new Date(); 
-      
-      var diffMs = currentDate - dueDate;
-      
-      var daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24)) - 1;
-      
-      const timer = document.getElementById("timer");
-      timer.textContent = String(daysLeft) + " days ago...";
+    if (window.location.href.endsWith(".html")) {
+    window.location.href = window.location.href.replace(".html", "");
     }
 
-    getCurrentDateDistance(new Date("2025-11-03"));
-      
     </script>
   </body>
 </html>
