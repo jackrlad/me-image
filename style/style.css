@@ -170,6 +170,7 @@ i {
 }
 
 .navigation_location {
+  position: sticky;
   border-radius: 25px;
   font-family: inherit;
   font-weight: inherit;
