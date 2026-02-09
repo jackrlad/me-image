@@ -59,6 +59,7 @@ i {
   object-fit: contain;
   position: relative;
   align-items: center;
+  height: 15%;
 }
 
 #grave {
