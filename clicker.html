@@ -15,7 +15,7 @@
 </button>
 
 <div style="position: absolute;">
-    <div id="positional-div" style="top: -50px; left: 0px;">
+    <div id="positional-div" style="top: -80px; left: 0px;">
         <div id="seed-counter"></div>
         <div id="seed-per-second"></div>
     </div>
@@ -29,6 +29,31 @@
                 <div id="plant-plot-counter-part-2"></div>
             </div>
             <div id="plant-plot-price"></div>
+        </button>
+    </div>
+</div>
+
+<div style="position: absolute;">
+    <div id="positional-div" style="top: -100px; left: -500px;">
+        <div>This is where you rent your plots</div>
+    </div>
+</div>
+
+<div style="position: absolute;">
+    <div id="positional-div" style="top: -50px; left: -500px;">
+        <button id="upgrade-button-outer" onclick="plantPlot.buy(1)" style="cursor: pointer; z-index: 1000;">
+            <div id="upgrade-button-inner">
+                <div id="plant-plot-rent-part-1">Rent</div>
+                <div id="plant-plot-rent-part-2"></div>
+            </div>
+            <div id="plant-plot-rent"></div>
+        </button>
+        <button id="upgrade-button-outer" onclick="plantPlot.buy(1)" style="cursor: pointer; z-index: 1000;">
+            <div id="upgrade-button-inner">
+                <div id="plant-plot-unrent-part-1">Unrent</div>
+                <div id="plant-plot-unrent-part-2"></div>
+            </div>
+            <div id="plant-plot-unrent"></div>
         </button>
     </div>
 </div>
@@ -113,12 +138,23 @@ const plantPlotCounterPart1 = document.getElementById("plant-plot-counter-part-1
 const plantPlotCounterPart2 = document.getElementById("plant-plot-counter-part-2");
 const plantPlotPrice = document.getElementById("plant-plot-price");
 
+const plantPlotRentPart1 = document.getElementById("plant-plot-rent-part-1");
+const plantPlotRentPart2 = document.getElementById("plant-plot-rent-part-2");
+const plantPlotRent = document.getElementById("plant-plot-rent");
+
+const plantPlotUnrentPart1 = document.getElementById("plant-plot-unrent-part-1");
+const plantPlotUnrentPart2 = document.getElementById("plant-plot-unrent-part-2");
+const plantPlotUnrent = document.getElementById("plant-plot-unrent");
+
 const grass = new plantType("grass", 3, 2, "grass");
 var currentPlant = grass;
 
 const plantPlot = new upgradeType("plant plot", 1.7, currentPlant.getSeedProduceAmount() - 1)
 
+const plantPlotToRent = new upgradeType("plant plot rent", 1.7, currentPlant.getSeedProduceAmount() - 1)
+
 var seeds = 1;
+var money = 0;
 var previousSeeds = 0;
 var seedsPerSecond = 0;
 var plantExists;

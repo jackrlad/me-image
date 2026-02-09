@@ -52,6 +52,15 @@ i {
   bottom: -80px;
 }
 
+#socials {
+  image-rendering: pixelated;
+  height: 15%;
+  width: 15%;
+  object-fit: contain;
+  position: relative;
+  align-items: center;
+}
+
 #grave {
   image-rendering: pixelated;
   height: 100%;
