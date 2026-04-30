@@ -109,7 +109,7 @@
 
   .text_container_small_bold {
     text-align: left;
-    font-size: 2.8rem;
+    font-size: 3.8rem;
     font-weight: 500;
     height: 16px;
     color: #bbbbbb;
@@ -117,7 +117,7 @@
 
   .text_container_small {
     text-align: left;
-    font-size: 2.8rem;
+    font-size: 3.8rem;
     font-weight: 500;
     height: 16px;
     color: #777777;
@@ -125,7 +125,7 @@
 
   .text_container {
     text-align: center;
-    font-size: 3.2rem;
+    font-size: 4.2rem;
     font-weight: 500;
     min-height: 30px;
     color: #999999;
@@ -133,7 +133,7 @@
 
   .text_container_large {
     text-align: center;
-    font-size: 4.4rem;
+    font-size: 5.4rem;
     font-weight: 500;
     min-height: 60px;
     color: #ffffff;
@@ -141,7 +141,7 @@
 
   .text_container_button {
     text-align: center;
-    font-size: 3.2rem;
+    font-size: 4.2rem;
     font-weight: 500;
     padding: 12px 40px;
     width: 100%;
@@ -256,7 +256,7 @@
 
 
 
-
+@media (orientation: landscape){
 body {
   background-color: #670000;
   transition: background-color 3s ease-in-out;
@@ -470,4 +470,5 @@ i {
 .navigation:hover {
   background-color: #222222;
   color: #ffffff;
+}
 }
