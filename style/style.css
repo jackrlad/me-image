@@ -187,6 +187,9 @@
 
   .header div {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
       flex-direction: column;
       align-items: center;
   }
@@ -201,7 +204,7 @@
     background-color: inherit;
     transition-duration: 0.2s;
     width: 660px;
-    height: 60px;
+    height: 220px;
     color: #999999;
     cursor: pointer;
   }
@@ -216,7 +219,7 @@
     outline: none;
     background-color: #222222;
     width: 660px;
-    height: 60px;
+    height: 220px;
     color: #ffffff;
   }
 
