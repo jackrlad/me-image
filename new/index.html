@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>jackrlad</title>
+  <link href="style/style.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/gif" href="sprites/profile_with_background.gif"/>
+</head>
+<body>
+
+<div id="margin">
+
+
+
+<div id="home" class="showing">
+    <br><br><br><br><br><br><br><br><br><br>
+    <h1>jackrlad.com</h1>
+    <h2 id="timer">Soon...</h2>
+    <br><br><br><br><br><br><br><br><br><br>
+    <h3>I find Video Games a form of <i>art.</i> 
+        I know many may not have the same sentiment, enjoying them strickly for that rush they get just <i>killing the bad guys,</i> but... <br><br>
+        A <i>lot</i> of games I've seen in my time present the most <i>beautiful</i> worlds and stories. Discovering that- <i>experiencing</i> it all is why I am a developer. <br><br>
+        I do this hoping, I can give you even a <i>fraction</i> of what I've experienced.<br><br>
+        Even just for a <i>moment.</i>
+    </h3>    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+
+
+<div id="projects" class="showing">
+    <br><br>
+        <h1 >Projects</h1>
+        <a href="https://jackrlad.itch.io/youre-on-warden-duty"><button id="text_container_button">You're on Warden duty</button></a>
+        <div><br></div>
+        <a href="https://globalgamejam.org/games/2026/masking-tape-mayhem-4"><button id="text_container_button">Masking Tape Mayhem</button></a>
+        <div><br></div>
+        <a href="https://jackrlad.itch.io/a-grave-borrowed"><button id="text_container_button">A Grave, Borrowed</button></a>
+</div>
+
+
+
+<div id="faq" class="showing">
+    <br><br>
+        <h1>faq / contact</h1>
+        <a href="mailto:jackrlad.com@gmail.com" target="_blank"><button id="text_container_button">jackrlad.com@gmail.com</button></a>
+        <br>
+        <p>- Where can I find your CV?</p>
+        <h4>Send me an email and I will forward to over to you!</h4>
+        <br>
+        <p>- Can I pet the otter?</p>
+        <h4>(crying) This faq is over!</h4>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+
+
+</div>
+    
+<div id="bottom-bar">
+    <div id="viewport">
+        <img id="map" src="sprites/main_page_map.png" alt="map" />
+        <img id="player" src="sprites/player/playerDown.png" alt="player" />
+    </div>
+</div>
+
+<script>
+const map = document.getElementById("map");
+const player = document.getElementById("player");
+const viewport = document.getElementById("viewport");
+
+const home = document.getElementById("home");
+const projects = document.getElementById("projects");
+
+home.style.display = "none";
+projects.style.display = "none";
+
+var playerVisiblePosX = (viewport.clientWidth / 2) - (player.clientWidth / 2)
+var playerVisiblePosY = (viewport.clientHeight / 2) - (player.clientHeight / 2)
+
+player.style.transform = `translate(${playerVisiblePosX}px, ${playerVisiblePosY}px)`;
+
+const pixelSize = 16 * 4
+const playerPos = [6 * pixelSize, 2 * pixelSize];
+const SPEED = 4
+
+const mapCollision = [
+    ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"], 
+    ["#", "#", "#", "1", "#", "#", "0", "#", "#", "2", "#"],
+    ["#", "3", " ", " ", " ", " ", " ", " ", " ", " ", "#"],
+    ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"]
+];
+
+const collisionPos = [6, 2];
+
+function move() {
+    const newPosX = -playerPos[0] + viewport.clientWidth / 2 + 32;
+    const newPosY = -playerPos[1] + viewport.clientHeight / 2 - 32;
+
+    map.style.transform = `translate(${newPosX}px, ${newPosY}px)`;
+}
+
+function canMove(y, x) {
+    return (
+        mapCollision[Math.round(y)][Math.round(x)] !== "#"
+    );
+}
+
+move();
+
+const keys = {};
+
+document.addEventListener("keydown", (e) => {
+    if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        e.preventDefault();
+    }
+
+    keys[e.key] = true
+})
+
+document.addEventListener("keyup", (e) => {
+    keys[e.key] = false
+})
+
+
+
+
+function gameLoop() {
+    console.log(collisionPos)
+
+    if (keys["ArrowUp"] && canMove(collisionPos[1]-(1 / pixelSize) * SPEED, collisionPos[0])) {
+        playerPos[1] -= SPEED
+        collisionPos[1] -= SPEED / pixelSize
+    }
+
+    if (keys["ArrowDown"] && canMove(collisionPos[1]+(1 / pixelSize) * SPEED, collisionPos[0])) {
+        playerPos[1] += SPEED
+        collisionPos[1] += SPEED / pixelSize
+    }
+
+    if (keys["ArrowRight"] && canMove(collisionPos[1], collisionPos[0]+(1 / pixelSize) * SPEED)) {
+        playerPos[0] += SPEED
+        collisionPos[0] += SPEED / pixelSize
+        console.log("Moved right", playerPos, collisionPos);
+    }
+
+    if (keys["ArrowLeft"] && canMove(collisionPos[1], collisionPos[0]-(1 / pixelSize) * SPEED)) {
+        playerPos[0] -= SPEED
+        collisionPos[0] -= SPEED / pixelSize
+    }
+
+    move();
+
+    if (mapCollision[Math.round(collisionPos[1])][Math.round(collisionPos[0])] === "0") {
+        home.style.display = "block";
+    }
+    else if (mapCollision[Math.round(collisionPos[1])][Math.round(collisionPos[0])] === "1") {
+        projects.style.display = "block";
+    }
+    else if (mapCollision[Math.round(collisionPos[1])][Math.round(collisionPos[0])] === "2") {
+        faq.style.display = "block";
+    }
+    else {
+        home.style.display = "none";
+        projects.style.display = "none";
+        faq.style.display = "none";
+    }
+
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+
+
+
+
+
+
+function getCurrentDateDistance(dueDate) {
+    var currentDate = new Date(); 
+    
+    var diffMs = currentDate - dueDate;
+    
+    var daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24)) - 1;
+    
+    const timer = document.getElementById("timer");
+    timer.textContent = String(daysLeft) + " days ago...";
+}
+
+getCurrentDateDistance(new Date("2025-11-03"));
+</script>
+
+</body>
+</html>
