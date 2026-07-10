@@ -78,13 +78,14 @@ projects.style.display = "none";
 faq.style.display = "none";
 
 var playerVisiblePosX = (viewport.clientWidth / 2) - (player.clientWidth / 2)
-var playerVisiblePosY = (viewport.clientHeight / 2) - (player.clientHeight / 2)
+var playerVisiblePosY = (viewport.clientHeight / 2.2) - (player.clientHeight / 2)
 
 player.style.transform = `translate(${playerVisiblePosX}px, ${playerVisiblePosY}px)`;
 
 const pixelSize = 16 * 4
 const playerPos = [6 * pixelSize, 2 * pixelSize];
 const SPEED = 4
+const stopGameloop = false;
 
 const mapCollision = [
     ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"], 
@@ -153,25 +154,35 @@ function gameLoop() {
 
     move();
 
-    if (mapCollision[Math.round(collisionPos[1])][Math.round(collisionPos[0])] === "0") {
-        home.style.display = "block";
-    }
-    else if (mapCollision[Math.round(collisionPos[1])][Math.round(collisionPos[0])] === "1") {
-        projects.style.display = "block";
-    }
-    else if (mapCollision[Math.round(collisionPos[1])][Math.round(collisionPos[0])] === "2") {
-        faq.style.display = "block";
-    }
-    else {
-        home.style.display = "none";
-        projects.style.display = "none";
-        faq.style.display = "none";
+    home.style.display = "none";
+    projects.style.display = "none";
+    faq.style.display = "none";
+
+    switch (mapCollision[Math.round(collisionPos[1])][Math.round(collisionPos[0])]) {
+        case "0":
+            home.style.display = "block";
+            break;
+
+        case "1":
+            projects.style.display = "block";
+            break;
+
+        case "2":
+            faq.style.display = "block";
+            break;
+
+        case "3":
+            window.location.replace("https://jackrlad.com/tj");
+            break;
     }
 
     requestAnimationFrame(gameLoop);
 }
 
-gameLoop();
+if(!stopGameloop){
+    gameLoop();
+}
+
 
 
 
