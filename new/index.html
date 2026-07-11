@@ -138,6 +138,8 @@ document.addEventListener("keyup", (e) => {
 function gameLoop() {
     console.log(collisionPos)
 
+
+
     const opacity = parseFloat(fade.style.opacity || 0);
 
     if (visible && opacity > 0){
@@ -145,7 +147,13 @@ function gameLoop() {
     }
     else if (!visible && opacity < 1){
         fade.style.opacity = parseFloat(fade.style.opacity || 0) + 0.05;
+        fade.style.display = "block";
     }
+    else if(visible) {
+        fade.style.display = "none";
+    }
+
+
 
     if (keys["ArrowUp"] && canMove(collisionPos[1]-(1 / pixelSize) * SPEED, collisionPos[0])) {
         playerPos[1] -= SPEED
@@ -195,7 +203,7 @@ function gameLoop() {
             break;
 
         case "3":
-            window.location.replace("https://jackrlad.com/tj");
+            window.location.assign("https://jackrlad.com/tj");
             break;
     }
 
