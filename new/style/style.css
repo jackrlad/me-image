@@ -55,25 +55,6 @@
     i {
     color: #cccccc;
     }
-    
-.panel {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-
-    transition:
-        opacity 0.5s ease,
-        transform 0.5s ease;
-
-    transform: translateY(10px);
-}
-
-.panel.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
-}
 
     #text_container_button {
         text-align: center;
@@ -121,6 +102,7 @@
     }
 
     #bottom-bar {
+        z-index: 50;
         position: fixed;
         bottom: 0;
         left: 0;
@@ -133,6 +115,7 @@
     }
 
     #viewport {
+        z-index: 50;
         width: 256px;
         height: 256px;
         overflow: hidden;
@@ -140,14 +123,29 @@
     }
 
     #map {
+        z-index: 60;
         position: absolute;
         width: 704px;
         image-rendering: pixelated;
     }
 
+    #background {
+        z-index: -50;
+        position: fixed;
+        opacity: 0.2;
+    }
+
+    #fade-in-out {
+        z-index: 20;
+        position: fixed;
+        width: 200%;
+        height: 200%;
+        opacity: 1;
+    }
+
     #player {
+        z-index: 70;
         position: absolute;
         width: 64px;
         image-rendering: pixelated;
-        z-index: 10;
     }

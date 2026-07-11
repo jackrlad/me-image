@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<video autoplay muted loop playsinline id="background">
+    <source src="sprites/background.mp4" type="video/mp4">
+</video>
+<img id="fade-in-out" src="sprites/square.png" alt="fade-in-out" />
+
 <div id="margin">
 
 
@@ -23,7 +28,7 @@
         I do this hoping, I can give you even a <i>fraction</i> of what I've experienced.<br><br>
         Even just for a <i>moment.</i>
     </h3>    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 
 
@@ -68,6 +73,7 @@
 const map = document.getElementById("map");
 const player = document.getElementById("player");
 const viewport = document.getElementById("viewport");
+const fade = document.getElementById("fade-in-out")
 
 const home = document.getElementById("home");
 const projects = document.getElementById("projects");
@@ -86,6 +92,7 @@ const pixelSize = 16 * 4
 const playerPos = [6 * pixelSize, 2 * pixelSize];
 const SPEED = 4
 const stopGameloop = false;
+let visible = false;
 
 const mapCollision = [
     ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"], 
@@ -131,6 +138,15 @@ document.addEventListener("keyup", (e) => {
 function gameLoop() {
     console.log(collisionPos)
 
+    const opacity = parseFloat(fade.style.opacity || 0);
+
+    if (visible && opacity > 0){
+        fade.style.opacity = parseFloat(fade.style.opacity || 0) - 0.05;
+    }
+    else if (!visible && opacity < 1){
+        fade.style.opacity = parseFloat(fade.style.opacity || 0) + 0.05;
+    }
+
     if (keys["ArrowUp"] && canMove(collisionPos[1]-(1 / pixelSize) * SPEED, collisionPos[0])) {
         playerPos[1] -= SPEED
         collisionPos[1] -= SPEED / pixelSize
@@ -154,21 +170,28 @@ function gameLoop() {
 
     move();
 
-    home.style.display = "none";
-    projects.style.display = "none";
-    faq.style.display = "none";
+    visible = false;
 
     switch (mapCollision[Math.round(collisionPos[1])][Math.round(collisionPos[0])]) {
         case "0":
             home.style.display = "block";
+            projects.style.display = "none";
+            faq.style.display = "none";
+            visible = true;
             break;
 
         case "1":
+            home.style.display = "none";
             projects.style.display = "block";
+            faq.style.display = "none";
+            visible = true;
             break;
 
         case "2":
+            home.style.display = "none";
+            projects.style.display = "none";
             faq.style.display = "block";
+            visible = true;
             break;
 
         case "3":
