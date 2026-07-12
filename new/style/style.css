@@ -101,7 +101,6 @@
         text-align: center;
     }
 
-@media (orientation: landscape){
     .movement-button{
         z-index: 100;
         position: absolute;
@@ -180,90 +179,3 @@
         width: 64px;
         image-rendering: pixelated;
     }
-}
-
-
-
-
-
-
-@media (orientation: portrait){
-    .movement-button{
-        z-index: 100;
-        position: absolute;
-        text-align: center;
-        font-size: 1.2rem;
-        font-weight: 500;
-        background-color: #181818;
-        color: #999999;
-        border-radius: 5px;
-        font-family: inherit;
-        font-weight: inherit;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        touch-action: none;
-        user-select: none;
-        -webkit-user-select: none;
-        -webkit-touch-callout: none;
-    }
-
-    .movement-button:hover {
-        background-color: #222222;
-        color: #dddddd;
-    }
-
-    #movement-image{
-        width: 128px;
-        image-rendering: pixelated;
-    }
-
-    #bottom-bar {
-        z-index: 50;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 532px;
-        background: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #viewport {
-        z-index: 50;
-        width: 512px;
-        height: 512;
-        overflow: hidden;
-        position: relative;
-    }
-
-    #map {
-        z-index: 60;
-        position: absolute;
-        width: 1408;
-        image-rendering: pixelated;
-    }
-
-    #background {
-        z-index: -50;
-        position: fixed;
-        opacity: 0.2;
-    }
-
-    #fade-in-out {
-        z-index: 20;
-        position: fixed;
-        width: 200%;
-        height: 200%;
-        opacity: 1;
-    }
-
-    #player {
-        z-index: 70;
-        position: absolute;
-        width: 128;
-        image-rendering: pixelated;
-    }
-}
