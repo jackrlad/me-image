@@ -281,6 +281,12 @@ window.addEventListener("pageshow", () => {
     }
 });
 
+const video = document.getElementById("background");
+
+video.play().catch(err => {
+    console.log(err);
+});
+
 
 
 
