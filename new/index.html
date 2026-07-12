@@ -158,33 +158,19 @@ document.addEventListener("keyup", (e) => {
 
 
 
-upObj.addEventListener("pointerdown", () => {
+
+upObj.addEventListener("click", () => {
     up = true;
 });
-downObj.addEventListener("pointerdown", () => {
+downObj.addEventListener("click", () => {
     down = true;
 });
-leftObj.addEventListener("pointerdown", () => {
+leftObj.addEventListener("click", () => {
     left = true;
 });
-rightObj.addEventListener("pointerdown", () => {
+rightObj.addEventListener("click", () => {
     right = true;
 });
-
-upObj.addEventListener("pointerup", () => {
-    up = false;
-});
-downObj.addEventListener("pointerup", () => {
-    down = false;
-});
-leftObj.addEventListener("pointerup", () => {
-    left = false;
-});
-rightObj.addEventListener("pointerup", () => {
-    right = false;
-});
-
-
 
 
 
@@ -208,27 +194,33 @@ function gameLoop() {
     }
 
 
+    let movementConst = 1
+    if (up||down||left||right) movementConst = pixelSize/4;
 
-    if ((keys["ArrowUp"] || up === true) && canMove(collisionPos[1]-(1 / pixelSize) * SPEED, collisionPos[0])) {
-        playerPos[1] -= SPEED
-        collisionPos[1] -= SPEED / pixelSize
+    if ((keys["ArrowUp"] || up) && canMove(collisionPos[1]-(1 / pixelSize) * SPEED * movementConst, collisionPos[0])) {
+        playerPos[1] -= SPEED * movementConst
+        collisionPos[1] -= (SPEED * movementConst) / pixelSize
     }
 
-    if ((keys["ArrowDown"] || down === true) && canMove(collisionPos[1]+(1 / pixelSize) * SPEED, collisionPos[0])) {
-        playerPos[1] += SPEED
-        collisionPos[1] += SPEED / pixelSize
+    if ((keys["ArrowDown"] || down) && canMove(collisionPos[1]+(1 / pixelSize) * SPEED * movementConst, collisionPos[0])) {
+        playerPos[1] += SPEED * movementConst
+        collisionPos[1] += (SPEED * movementConst) / pixelSize
     }
 
-    if ((keys["ArrowRight"] || right === true) && canMove(collisionPos[1], collisionPos[0]+(1 / pixelSize) * SPEED)) {
-        playerPos[0] += SPEED
-        collisionPos[0] += SPEED / pixelSize
-        console.log("Moved right", playerPos, collisionPos);
+    if ((keys["ArrowRight"] || right) && canMove(collisionPos[1], collisionPos[0]+(1 / pixelSize) * SPEED * movementConst)) {
+        playerPos[0] += SPEED * movementConst
+        collisionPos[0] += (SPEED * movementConst) / pixelSize
     }
 
-    if ((keys["ArrowLeft"] || left === true) && canMove(collisionPos[1], collisionPos[0]-(1 / pixelSize) * SPEED)) {
-        playerPos[0] -= SPEED
-        collisionPos[0] -= SPEED / pixelSize
+    if ((keys["ArrowLeft"] || left) && canMove(collisionPos[1], collisionPos[0]-(1 / pixelSize) * SPEED * movementConst)) {
+        playerPos[0] -= SPEED * movementConst
+        collisionPos[0] -= (SPEED * movementConst) / pixelSize
     }
+
+    up = false;
+    down = false;
+    left = false;
+    right = false;
 
     move();
 
