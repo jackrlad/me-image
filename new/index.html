@@ -63,6 +63,20 @@
 </div>
     
 <div id="bottom-bar">
+    
+    <button id="up" class="movement-button" style="transform: translate(-12rem, -2.5rem);">
+        <img id="movement-image" src="sprites/arrow_up.png" alt="up" />
+    </button>
+    <button id="down" class="movement-button" style="transform: translate(-12rem, 2.5rem);">
+        <img id="movement-image" src="sprites/arrow_down.png" alt="down" />
+    </button>
+    <button id="left" class="movement-button" style="transform: translate(12rem, -2.5rem);">
+        <img id="movement-image" src="sprites/arrow_left.png" alt="left" />
+    </button>
+    <button id="right" class="movement-button" style="transform: translate(12rem, 2.5rem);">
+        <img id="movement-image" src="sprites/arrow_right.png" alt="right" />
+    </button>
+
     <div id="viewport">
         <img id="map" src="sprites/main_page_map.png" alt="map" />
         <img id="player" src="sprites/player/playerDown.png" alt="player" />
@@ -79,6 +93,11 @@ const home = document.getElementById("home");
 const projects = document.getElementById("projects");
 const faq = document.getElementById("faq");
 
+const upObj = document.getElementById("up");
+const downObj = document.getElementById("down");
+const leftObj = document.getElementById("left");
+const rightObj = document.getElementById("right");
+
 home.style.display = "none";
 projects.style.display = "none";
 faq.style.display = "none";
@@ -93,6 +112,10 @@ const playerPos = [6 * pixelSize, 2 * pixelSize];
 const SPEED = 4
 const stopGameloop = false;
 let visible = false;
+let up = false;
+let down = false;
+let left = false;
+let right = false;
 
 const mapCollision = [
     ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"], 
@@ -135,6 +158,37 @@ document.addEventListener("keyup", (e) => {
 
 
 
+upObj.addEventListener("pointerdown", () => {
+    up = true;
+});
+downObj.addEventListener("pointerdown", () => {
+    down = true;
+});
+leftObj.addEventListener("pointerdown", () => {
+    left = true;
+});
+rightObj.addEventListener("pointerdown", () => {
+    right = true;
+});
+
+upObj.addEventListener("pointerup", () => {
+    up = false;
+});
+downObj.addEventListener("pointerup", () => {
+    down = false;
+});
+leftObj.addEventListener("pointerup", () => {
+    left = false;
+});
+rightObj.addEventListener("pointerup", () => {
+    right = false;
+});
+
+
+
+
+
+
 function gameLoop() {
     console.log(collisionPos)
 
@@ -155,23 +209,23 @@ function gameLoop() {
 
 
 
-    if (keys["ArrowUp"] && canMove(collisionPos[1]-(1 / pixelSize) * SPEED, collisionPos[0])) {
+    if ((keys["ArrowUp"] || up === true) && canMove(collisionPos[1]-(1 / pixelSize) * SPEED, collisionPos[0])) {
         playerPos[1] -= SPEED
         collisionPos[1] -= SPEED / pixelSize
     }
 
-    if (keys["ArrowDown"] && canMove(collisionPos[1]+(1 / pixelSize) * SPEED, collisionPos[0])) {
+    if ((keys["ArrowDown"] || down === true) && canMove(collisionPos[1]+(1 / pixelSize) * SPEED, collisionPos[0])) {
         playerPos[1] += SPEED
         collisionPos[1] += SPEED / pixelSize
     }
 
-    if (keys["ArrowRight"] && canMove(collisionPos[1], collisionPos[0]+(1 / pixelSize) * SPEED)) {
+    if ((keys["ArrowRight"] || right === true) && canMove(collisionPos[1], collisionPos[0]+(1 / pixelSize) * SPEED)) {
         playerPos[0] += SPEED
         collisionPos[0] += SPEED / pixelSize
         console.log("Moved right", playerPos, collisionPos);
     }
 
-    if (keys["ArrowLeft"] && canMove(collisionPos[1], collisionPos[0]-(1 / pixelSize) * SPEED)) {
+    if ((keys["ArrowLeft"] || left === true) && canMove(collisionPos[1], collisionPos[0]-(1 / pixelSize) * SPEED)) {
         playerPos[0] -= SPEED
         collisionPos[0] -= SPEED / pixelSize
     }
@@ -215,6 +269,17 @@ if(!stopGameloop){
 }
 
 
+
+
+
+window.addEventListener("pageshow", () => {
+    const video = document.getElementById("background");
+
+    if (video) {
+        video.currentTime = 0;
+        video.play();
+    }
+});
 
 
 
