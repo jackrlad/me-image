@@ -12,6 +12,23 @@
   interact
   </div>
 </div>
+
+    <button id="up" class="movement-button" style="transform: translate(35rem, -12rem);">
+        <img id="movement-image" src="sprites/arrow_up.png" alt="up" />
+    </button>
+    <button id="down" class="movement-button" style="transform: translate(35rem, 12rem);">
+        <img id="movement-image" src="sprites/arrow_down.png" alt="down" />
+    </button>
+    <button id="left" class="movement-button" style="transform: translate(23.5rem, -12rem);">
+        <img id="movement-image" src="sprites/arrow_left.png" alt="left" />
+    </button>
+    <button id="right" class="movement-button" style="transform: translate(23.5rem, 12rem);">
+        <img id="movement-image" src="sprites/arrow_right.png" alt="right" />
+    </button>
+    <button id="z" class="movement-button" style="transform: translate(-35rem, 0rem);">
+        <img id="movement-image" src="sprites/z_button.png" alt="z" />
+    </button>
+
 <div style="position: relative">
   <div class="container">
     <img id="-3,-3" width="80">
@@ -89,13 +106,41 @@
 </div>
 
 <script>
-  
+  /*
 if (window.location.href.endsWith(".html")) {
 window.location.href = window.location.href.replace(".html", "");
 }
+*/
 
 
 
+const upObj = document.getElementById("up")
+const downObj = document.getElementById("down")
+const leftObj = document.getElementById("left")
+const rightObj = document.getElementById("right")
+const zObj = document.getElementById("right")
+
+let up = false;
+let down = false;
+let left = false;
+let right = false;
+let z = false;
+
+upObj.addEventListener("click", () => {
+    up = true;
+});
+downObj.addEventListener("click", () => {
+    down = true;
+});
+leftObj.addEventListener("click", () => {
+    left = true;
+});
+rightObj.addEventListener("click", () => {
+    right = true;
+});
+zObj.addEventListener("click", () => {
+    z = true;
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const player = document.getElementById("player");
@@ -174,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let newRow = row;
       let newCol = col;
 
-      if (e.key === "ArrowUp" && !stopMovement && !permaStopMovement) {
+      if ((e.key === "ArrowUp" || up) && !stopMovement && !permaStopMovement) {
         if (step) {
           player.removeAttribute("class");
           player.classList.add("player_up");
@@ -193,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         newRow--;
         interaction = false;
-      } else if (e.key === "ArrowDown" && !stopMovement && !permaStopMovement) {
+      } else if ((e.key === "ArrowDown" || down) && !stopMovement && !permaStopMovement) {
         if (step) {
           player.removeAttribute("class");
           player.classList.add("player_down");
@@ -212,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         newRow++;
         interaction = false;
-      } else if (e.key === "ArrowLeft" && !stopMovement && !permaStopMovement) {
+      } else if ((e.key === "ArrowLeft" || left) && !stopMovement && !permaStopMovement) {
         if (step) {
           player.removeAttribute("class");
           player.classList.add("player_left");
@@ -231,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         newCol--;
         interaction = false;
-      } else if (e.key === "ArrowRight" && !stopMovement && !permaStopMovement) {
+      } else if ((e.key === "ArrowRight" || right) && !stopMovement && !permaStopMovement) {
         if (step) {
           player.removeAttribute("class");
           player.classList.add("player_right");
@@ -250,7 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         newCol++;
         interaction = false;
-      } else if (e.key === "z") {
+      } else if (e.key === "z" || z) {
         pressedZ = true;
         if (interaction) {
           interaction = false; 
@@ -311,7 +356,14 @@ document.addEventListener("DOMContentLoaded", () => {
         try_interaction("his_bed", "His bed.");
         if (gotFuel) {try_interaction("house");}
       }
+    up = false;
+    down = false;
+    left = false;
+    right = false;
+    z = false;
   });
+
+
 
   function burnYourHouseDown() {
     playable_area = [    
