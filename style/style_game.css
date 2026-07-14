@@ -26,7 +26,8 @@ html, body {
 
 
 
-    .movement-button{
+@media (orientation: portrait){
+.movement-button{
         z-index: 100;
         position: absolute;
         text-align: center;
@@ -46,7 +47,7 @@ html, body {
         -webkit-touch-callout: none;
     }
 
-    .movement-button:hover {
+.movement-button:hover {
         background-color: #222222;
         color: #dddddd;
     }
@@ -55,6 +56,17 @@ html, body {
     width: 128px;
     image-rendering: pixelated;
   }
+}
+
+
+@media (orientation: landscape){
+  .movement-button{
+    display: none;
+  }
+  #movement-image{
+    display: none;
+  }
+}
 
 .container {
   display: grid;

@@ -118,29 +118,13 @@ const upObj = document.getElementById("up")
 const downObj = document.getElementById("down")
 const leftObj = document.getElementById("left")
 const rightObj = document.getElementById("right")
-const zObj = document.getElementById("right")
+const zObj = document.getElementById("z")
 
 let up = false;
 let down = false;
 let left = false;
 let right = false;
 let z = false;
-
-upObj.addEventListener("click", () => {
-    up = true;
-});
-downObj.addEventListener("click", () => {
-    down = true;
-});
-leftObj.addEventListener("click", () => {
-    left = true;
-});
-rightObj.addEventListener("click", () => {
-    right = true;
-});
-zObj.addEventListener("click", () => {
-    z = true;
-});
 
 document.addEventListener("DOMContentLoaded", () => {
   const player = document.getElementById("player");
@@ -208,18 +192,80 @@ document.addEventListener("DOMContentLoaded", () => {
   update_pos();
   movePlayerToIndex();
 
+  
+
+  upObj.addEventListener("click", () => {
+    if (!keydown) {
+      keydown = true;
+    }
+      up = true;
+      tryMove();
+  });
+  downObj.addEventListener("click", () => {
+    if (!keydown) {
+      keydown = true;
+    }
+      down = true;
+      tryMove();
+  });
+  leftObj.addEventListener("click", () => {
+    if (!keydown) {
+      keydown = true;
+    }
+      left = true;
+      tryMove();
+  });
+  rightObj.addEventListener("click", () => {
+    if (!keydown) {
+      keydown = true;
+    }
+      right = true;
+      tryMove();
+  });
+  zObj.addEventListener("click", () => {
+    if (!keydown) {
+      keydown = true;
+    }
+      z = true;
+      tryMove();
+  });
+
   document.addEventListener("keyup", (e) => {
     if (keydown) {keydown = false}
   })
   document.addEventListener("keydown", (e) => {
     if (!keydown) {
       keydown = true;
-      const [row, col] = playerPos;
+    }
+    if (e.key === "ArrowUp"){
+      up = true
+      tryMove();
+    }
+    if (e.key === "ArrowDown"){
+      down = true
+      tryMove();
+    }
+    if (e.key === "ArrowLeft"){
+      left = true
+      tryMove();
+    }
+    if (e.key === "ArrowRight"){
+      right = true
+      tryMove();
+    }
+    if (e.key === "z"){
+      z = true
+      tryMove();
+    }
+  });
+      
+  function tryMove(){
+    const [row, col] = playerPos;
 
       let newRow = row;
       let newCol = col;
 
-      if ((e.key === "ArrowUp" || up) && !stopMovement && !permaStopMovement) {
+      if ((up) && !stopMovement && !permaStopMovement) {
         if (step) {
           player.removeAttribute("class");
           player.classList.add("player_up");
@@ -238,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         newRow--;
         interaction = false;
-      } else if ((e.key === "ArrowDown" || down) && !stopMovement && !permaStopMovement) {
+      } else if ((down) && !stopMovement && !permaStopMovement) {
         if (step) {
           player.removeAttribute("class");
           player.classList.add("player_down");
@@ -257,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         newRow++;
         interaction = false;
-      } else if ((e.key === "ArrowLeft" || left) && !stopMovement && !permaStopMovement) {
+      } else if ((left) && !stopMovement && !permaStopMovement) {
         if (step) {
           player.removeAttribute("class");
           player.classList.add("player_left");
@@ -276,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         newCol--;
         interaction = false;
-      } else if ((e.key === "ArrowRight" || right) && !stopMovement && !permaStopMovement) {
+      } else if ((right) && !stopMovement && !permaStopMovement) {
         if (step) {
           player.removeAttribute("class");
           player.classList.add("player_right");
@@ -295,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         newCol++;
         interaction = false;
-      } else if (e.key === "z" || z) {
+      } else if (z) {
         pressedZ = true;
         if (interaction) {
           interaction = false; 
@@ -355,15 +401,12 @@ document.addEventListener("DOMContentLoaded", () => {
         try_interaction("my_bed", "I'm not tired.");
         try_interaction("his_bed", "His bed.");
         if (gotFuel) {try_interaction("house");}
-      }
     up = false;
     down = false;
     left = false;
     right = false;
     z = false;
-  });
-
-
+  }
 
   function burnYourHouseDown() {
     playable_area = [    

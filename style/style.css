@@ -101,6 +101,7 @@
         text-align: center;
     }
 
+@media (orientation: portrait){
     .movement-button{
         z-index: 100;
         position: absolute;
@@ -130,6 +131,17 @@
         width: 64px;
         image-rendering: pixelated;
     }
+}
+
+
+@media (orientation: landscape){
+    .movement-button{
+    display: none;
+    }
+    #movement-image{
+    display: none;
+    }
+}
 
     #bottom-bar {
         z-index: 50;
