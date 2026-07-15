@@ -19,11 +19,6 @@ html, body {
   overflow: hidden;
 }
 
-#keys {
-  image-rendering: pixelated;
-  position: relative;
-}
-
 
 
 @media (orientation: portrait){
@@ -56,6 +51,10 @@ html, body {
     width: 128px;
     image-rendering: pixelated;
   }
+
+  #keys {
+    display: none;
+  }
 }
 
 
@@ -65,6 +64,11 @@ html, body {
   }
   #movement-image{
     display: none;
+  }
+
+  #keys {
+    image-rendering: pixelated;
+    position: relative;
   }
 }
 
