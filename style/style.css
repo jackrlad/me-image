@@ -273,6 +273,10 @@
         align-items: center;
     }
 
+    #bottom-og-the-page {
+        margin-bottom: 40%;
+    }
+
     #viewport {
         z-index: 50;
         width: 256px;
