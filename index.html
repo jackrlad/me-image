@@ -21,14 +21,14 @@
     <br><br><br><br><br><br>
     <h1>jackrlad.com</h1>
     <h2 id="timer">Soon...</h2>
-    <br><h2>\/</h2><h2>\/</h2><h2>\/</h2><h2>\/</h2><h2>\/</h2><h2>\/</h2><h2>\/</h2><h2>\/</h2><h2>\/</h2><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <h3>I find Video Games a form of <i>art.</i> 
         I know many may not have the same sentiment, enjoying them strictly for that rush they get just <i>killing the bad guys,</i> but... <br><br>
         A <i>lot</i> of games I've seen in my time present the most <i>beautiful</i> worlds and stories. Discovering that- <i>experiencing</i> it all is why I am a developer. <br><br>
         I do this hoping, I can give you even a <i>fraction</i> of what I've experienced.<br><br>
         Even just for a <i>moment.</i>
     </h3>    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br id="lower-home">
 </div>
 
 
@@ -90,6 +90,7 @@ const viewport = document.getElementById("viewport");
 const fade = document.getElementById("fade-in-out")
 
 const home = document.getElementById("home");
+const lowerHome = document.getElementById("lower-home");
 const projects = document.getElementById("projects");
 const faq = document.getElementById("faq");
 
@@ -118,6 +119,9 @@ let left = false;
 let right = false;
 let animationTime = 0;
 let frame = 0;
+let autoScrollCountDown = 0;
+let autoScroll = false;
+let autoScrollPerm = true;
 
 const mapCollision = [
     ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"], 
@@ -178,10 +182,6 @@ rightObj.addEventListener("click", () => {
 
 
 function gameLoop() {
-    console.log(collisionPos)
-
-
-
     const opacity = parseFloat(fade.style.opacity || 0);
 
     if (visible && opacity > 0){
@@ -193,6 +193,21 @@ function gameLoop() {
     }
     else if(visible) {
         fade.style.display = "none";
+    }
+
+
+    if (autoScroll){
+        if(autoScrollCountDown > 50){
+            lowerHome.scrollIntoView({
+                behavior: "smooth",
+                block: "end"
+            });
+            autoScrollCountDown = 0
+            autoScrollPerm = false
+            autoScroll = false
+        } else {
+            autoScrollCountDown += 1
+        }
     }
 
 
@@ -234,6 +249,9 @@ function gameLoop() {
             projects.style.display = "none";
             faq.style.display = "none";
             visible = true;
+            if(autoScrollPerm){
+                autoScroll = true;
+            }
             break;
 
         case "1":
@@ -252,6 +270,9 @@ function gameLoop() {
 
         case "3":
             window.location.assign("https://jackrlad.com/tj");
+            break;
+        case " ":
+            autoScrollPerm = true;
             break;
     }
 
@@ -293,10 +314,6 @@ window.addEventListener("pageshow", () => {
 });
 
 const video = document.getElementById("background");
-
-video.play().catch(err => {
-    console.log(err);
-});
 
 
 
